@@ -22,8 +22,23 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+// --------------------------- EDIT USUARI ---------------------------
+Route::get('/editarPerfil', 'UserController@redireccionar')->name('editarPerfil');
+Route::put('/editting', 'UserController@editar')->name('editarUsuariPersonal');
+
+
+// --------------------------- ----------- ---------------------------
+
+
+
+
+
+// --------------------------- RESTAURANT ---------------------------
 Route::get('/restaurant', 'RestaurantController@mostrar')->name('restaurant');
 
-Route::get('/crear', 'RestaurantController@crear')->name('crear');
+Route::get('/crearRestaurant', 'RestaurantController@crear')->name('crearRestaurant');
+Route::post('/agregar', 'RestaurantController@agregarRestaurant')->name('agregarRestaurant');
+// --------------------------- ----------- ---------------------------
+
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

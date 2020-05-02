@@ -9,7 +9,23 @@
 
                 <div class="card-body">
 
+                <div class="table-container">
+                    <table class="table table-bordred table-striped">
+                        <tr>
+                            <td>Nom</td>
+                            <td>Descripcio</td>
+                            <td>Opinions</td>
+                        </tr>
+                        @foreach ($restaurants as $restaurant)
+                            <tr>
+                                <td>{{ $restaurant->nom }}</td>
+                                <td>{{ $restaurant->descripcio }}</td>
+                                <td>{{ $restaurant->opinions }}</td>
 
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
 
 
 
