@@ -152,8 +152,34 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
 }
 
-.nav-menu .book-a-table a {
+.nav-menu .login a {
   background: #ffb03b;
+  color: #fff;
+  border-radius: 50px;
+  margin: 0 0 0 20px;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.nav-menu .logout a {
+  background: #FF0017;
+  color: #fff;
+  border-radius: 50px;
+  margin: 0 0 0 20px;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.nav-menu .register a {
+  background: #ff723b;
   color: #fff;
   border-radius: 50px;
   margin: 0 0 0 20px;
@@ -822,7 +848,9 @@ section {
 }
 
 .menu .menu-content::after {
-  content: "......................................................................" "...................................................................." "....................................................................";
+  content: "......................................................................"
+ "...................................................................."
+ "....................................................................";
   position: absolute;
   left: 20px;
   right: 0;
