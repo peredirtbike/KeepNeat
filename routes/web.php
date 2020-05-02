@@ -21,3 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('/restaurant', 'RestaurantController@mostrar')->name('restaurant');
+
+Route::get('/crear', 'RestaurantController@crear')->name('crear');
+
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
