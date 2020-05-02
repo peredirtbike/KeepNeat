@@ -56,10 +56,12 @@
   @if (Route::has('login'))
                     @auth
                     <li class="ml-5 nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name.' '.Auth::user()->cognoms }} </a>
+                      <a class="nav-link dropdown-toggle ml-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name}} </a>
+                      <img  src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:5px; border-radius:50%">
+
                       <div class="dropdown-menu" style="background-color: darkgray" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('perfil') }}">Perfil</a>
                         <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('editarPerfil') }}">Edita Perfil</a>
-                        <a class="dropdown-item" href="#">Another action</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                       </div>
