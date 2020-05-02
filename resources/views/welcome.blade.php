@@ -55,9 +55,17 @@
           <li><a href="#contact">Contacte</a></li>
   @if (Route::has('login'))
                     @auth
-                    <li class="ml-5"><a href="#">{{ Auth::user()->name.' '.Auth::user()->cognoms }}</a></li>
+                    <li class="ml-5 nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name.' '.Auth::user()->cognoms }} </a>
+                      <div class="dropdown-menu" style="background-color: darkgray" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Edita Perfil</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
+                      </div>
+                    </li>
       
-                    <li class="logout text-center"><a href="{{ url('/logout') }}">Logout</a></li>
+                    {{-- <li class="logout text-center"><a href="{{ url('/logout') }}">Logout</a></li> --}}
 
                     @else
                     <li class="login text-center"><a href="{{ route('login') }}">Login</a></li>
