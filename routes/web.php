@@ -23,10 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // --------------------------- EDIT USUARI ---------------------------
-Route::get('/editarPerfil', 'UserController@redireccionar')->name('editarPerfil');
-Route::put('/editting', 'UserController@editar')->name('editarUsuariPersonal');
-
-
 Route::get('/perfil', 'UserController@perfil')->name('perfil');
 Route::post('/perfil', 'UserController@update_avatar')->name('update_avatar');
 

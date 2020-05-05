@@ -10,33 +10,26 @@ use Image;
 class UserController extends Controller
 {
     //
-    public function redireccionar()
-    {
-        return view('editar_usuari');
-    }
-
-    public function editar(Request $request)
-    {
-        $idUsuari = $request -> idUser;
-
-        $data = \App\User::find($idUsuari);
-
-        $data->name = $request -> nameUser;
-        $data->cognoms = $request -> secondUser;
-        $data->nif = $request -> dniUser;
-        $data->data_naixement = $request -> naixementUser;
-
-        $data->save();
-        return view('welcome');
-    }
-
+  
     public function perfil(){
         return view('perfil', array('user'=>Auth::user()) );
     }
 
     public function update_avatar(Request $request){
+        
+        // NOM, COGNOM, DATA_NAIXEMENT, NIF
+        $idUsuari = $request -> idUser;
 
-    	// Handle the user upload of avatar
+        $usuari = \App\User::find($idUsuari);
+
+        $usuari->name = $request -> nameUser;
+        $usuari->cognoms = $request -> secondUser;
+        $usuari->nif = $request -> dniUser;
+        $usuari->data_naixement = $request -> naixementUser;
+
+        $usuari->save();
+
+    	// FOTO PERFIL
     	if($request->hasFile('avatar')){
     		$avatar = $request->file('avatar');
     		$filename = time() . '.' . $avatar->getClientOriginalExtension();

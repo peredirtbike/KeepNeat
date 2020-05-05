@@ -61,7 +61,6 @@
 
                       <div class="dropdown-menu" style="background-color: darkgray" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('perfil') }}">Perfil</a>
-                        <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('editarPerfil') }}">Edita Perfil</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                       </div>
