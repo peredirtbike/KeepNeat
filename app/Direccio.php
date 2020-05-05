@@ -8,6 +8,8 @@ class Direccio extends Model
 {
     //
     protected $table = 'direccions';
+    public $timestamps = false;
+
 
     protected $fillable = [
         'carrer', 'numero', 'pis', 'ciutats_id'
