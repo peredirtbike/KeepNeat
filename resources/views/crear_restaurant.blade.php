@@ -8,7 +8,8 @@
         <h3 class="text-center mb-4 mt-2">Crea el teu Restaurant</h3>
 
         <form enctype="multipart/form-data" action="{{ route('agregarRestaurant') }}" method="post">
-            @csrf
+        {{csrf_field()}}
+
 
             <div class="form-group">
                 <input type="text" class="form-control" id="nomRest" name="nomRest" placeholder="Introdueix el nom">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Image;
+
 
 class RestaurantController extends Controller
 {
@@ -27,6 +29,7 @@ class RestaurantController extends Controller
 
         $data["restaurants"] = $restaurants;
 
+
         return view('restaurant', $data);
     }
 
@@ -40,7 +43,28 @@ class RestaurantController extends Controller
         $restAgregar = new \App\Restaurant;
         $restAgregar-> nom = $request -> nomRest;
         $restAgregar-> descripcio = $request -> descRest;
+
+      
+        // FOTO RESTAURANT
+        
+        $this->validate($request, [
+            'images' => 'required',
+            'images.*' => 'mimes:png,jpg,jpeg'
+        ]);
+
+    	if($request->hasfile('images')){
+
+           foreach ($request->file('images') as $image)
+           {
+                $nameRest = $request -> nomRest;
+                $name = time().'.'.$image->getClientOriginalExtension();
+                $image -> move( public_path('/uploads/restaurant/' . $nameRest ));
+                $data[] = $name;
+           }
+        }
+        $restAgregar-> imatges = json_encode($data);
         $restAgregar-> save();
+
         return back()->with('agregar', 'Restaurant creat correctament');
     }
 
