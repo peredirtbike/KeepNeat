@@ -53,13 +53,17 @@ class RestaurantController extends Controller
         ]);
 
     	if($request->hasfile('images')){
-
+            $x = 0;
            foreach ($request->file('images') as $image)
            {
                 $nameRest = $request -> nomRest;
-                $name = time().'.'.$image->getClientOriginalExtension();
-                $image -> move( public_path('/uploads/restaurant/' . $nameRest ));
-                $data[] = $name;
+                $carpeta = '/uploads/restaurant/'.$nameRest.'/';
+                $name = $x.'.'.$image->getClientOriginalExtension();
+
+                Image::make($image)->save( public_path($carpeta . $name ) );
+
+                $x++;
+                $data[] =  $name;
            }
         }
         $restAgregar-> imatges = json_encode($data);
