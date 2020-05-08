@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'KeepnEat') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <script src="{{ url('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
@@ -29,7 +29,7 @@
 
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ url('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url('assets/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
     <link href="{{ url('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
@@ -52,20 +52,27 @@
         
               <nav class="nav-menu d-none d-lg-block ">
                 <ul>
-                  <li class="active"><a href="#hero">Home</a></li>
+                  {{-- <li class="active"><a href="#hero">Home</a></li>
                   <li><a href="#about">Qui som</a></li>
                   <li><a href="#why-us">Restaurants</a></li>
-                  <li><a href="#contact">Contacte</a></li>
-          @if (Route::has('login'))
+                  <li><a href="#contact">Contacte</a></li> --}}
+          @if(Route::has('login'))
                             @auth
                             <li class="ml-5 nav-item dropdown">
+                             
                               <a class="nav-link dropdown-toggle ml-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name}} </a>
                               <img  src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:5px; border-radius:50%">
         
                               <div class="dropdown-menu" style="background-color: darkgray" aria-labelledby="navbarDropdown">
+                                @if(\View::exists('perfil'))
+                                  <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
+                                @else
+
+                                
                                 <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('perfil') }}">Perfil</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
+                                @endif
                               </div>
                             </li>
               
@@ -78,7 +85,7 @@
                                 <li class="register text-center"><a href="{{ route('register') }}">Register</a></li>
                                 @endif
                             @endauth
-                    @endif
+                @endif
                 </ul>
               </nav><!-- .nav-menu -->
         
