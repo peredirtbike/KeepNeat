@@ -50,7 +50,7 @@
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
               </div>
         
-              <nav class="nav-menu d-none d-lg-block ">
+              <nav class=" nav-menu d-none d-lg-block ">
                 <ul>
                   {{-- <li class="active"><a href="#hero">Home</a></li>
                   <li><a href="#about">Qui som</a></li>
@@ -88,11 +88,11 @@
                 @endif
                 </ul>
               </nav><!-- .nav-menu -->
-        
+
             </div>
           </header><!-- End Header -->
 
-        <main class="py-4">
+        <main class="py-4" style="margin-top: 70px;">
             @yield('content')
         </main>
     </div>

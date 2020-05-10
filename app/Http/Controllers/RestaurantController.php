@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Image;
+use Carbon\Carbon;
+
 
 
 class RestaurantController extends Controller
@@ -38,39 +40,54 @@ class RestaurantController extends Controller
         return view('crear_restaurant');
     }
 
-    public function agregarRestaurant(Request $request)
+    // public function agregarRestaurant(Request $request)
+    // {
+    //     $restAgregar = new \App\Restaurant;
+    //     $restAgregar-> nom = $request -> nomRest;
+    //     $restAgregar-> descripcio = $request -> descRest;
+
+    // }
+   
+    function upload(Request $request)
     {
-        $restAgregar = new \App\Restaurant;
-        $restAgregar-> nom = $request -> nomRest;
-        $restAgregar-> descripcio = $request -> descRest;
+     $image = $request->file('file');
 
-      
-        // FOTO RESTAURANT
-        
-        $this->validate($request, [
-            'images' => 'required',
-            'images.*' => 'mimes:png,jpg,jpeg'
-        ]);
+     $imageName = uniqid().time() . '.' . $image->extension();
 
-    	if($request->hasfile('images')){
-            $x = 0;
-           foreach ($request->file('images') as $image)
-           {
-                $nameRest = $request -> nomRest;
-                $carpeta = '/uploads/restaurant/'.$nameRest.'/';
-                $name = $x.'.'.$image->getClientOriginalExtension();
+     $image->move(public_path('uploads/restaurant'), $imageName);
 
-                Image::make($image)->save( public_path($carpeta . $name ) );
-
-                $x++;
-                $data[] =  $name;
-           }
-        }
-        $restAgregar-> imatges = json_encode($data);
-        $restAgregar-> save();
-
-        return back()->with('agregar', 'Restaurant creat correctament');
+     return response()->json(['success' => $imageName]);
     }
 
+    function fetch()
+    {
+     $images = \File::allFiles(public_path('uploads/restaurant'));
+     $output = '<div class="row">';
+     foreach($images as $image)
+     {
+      $output .= '
+      <div class="col-md-2" style="margin-bottom:16px;" align="center">
+                <img src="'.asset('uploads/restaurant/' . $image->getFilename()).'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
+                <button type="button" class="btn btn-link remove_image" id="'.$image->getFilename().'">Remove</button>
+            </div>
+      ';
+     }
+     $output .= '</div>';
+     echo $output;
+    }
 
+    function delete(Request $request)
+    {
+     if($request->get('name'))
+     {
+      \File::delete(public_path('uploads/restaurant/' . $request->get('name')));
+     }
+    }
 }
+?>
+
+
+
+
+
+
