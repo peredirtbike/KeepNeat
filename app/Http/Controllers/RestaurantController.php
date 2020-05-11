@@ -39,9 +39,10 @@ class RestaurantController extends Controller
         return view('restaurant', $data);
     }
 
-    public function crear()
+    public function imatge()
     {
-        return view('crear_restaurant');
+
+        return view('imatgeRestaurant');
     }
 
     // public function agregarRestaurant(Request $request)

@@ -36,7 +36,7 @@ Route::post('/perfil', 'UserController@update_avatar')->name('update_avatar');
 // --------------------------- RESTAURANT ---------------------------
 Route::get('/restaurant', 'RestaurantController@mostrar')->name('restaurant');
 
-Route::get('/crearRestaurant', 'RestaurantController@crear')->name('crearRestaurant');
+Route::get('/imatgeRestaurant', 'RestaurantController@imatge')->name('imatgeRestaurant');
 Route::post('dropzone/upload', 'RestaurantController@upload')->name('dropzone.upload');
 Route::get('dropzone/fetch', 'RestaurantController@fetch')->name('dropzone.fetch');
 Route::get('dropzone/delete', 'RestaurantController@delete')->name('dropzone.delete');

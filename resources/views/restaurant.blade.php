@@ -14,7 +14,6 @@
                         <tr>
                             <td>Nom</td>
                             <td>Descripcio</td>
-                            <td>Opinions</td>
                             <td>Imatges</td>
 
                         </tr>
@@ -22,12 +21,7 @@
                             <tr>
                                 <td>{{ $restaurant->nom }}</td>
                                 <td>{{ $restaurant->descripcio }}</td>
-                                <td>{{ $restaurant->opinions }}</td>
                                 <td>
-                                    <img src="asset('/uploads/restaurant/{{ $restaurant->nom }}/{{ $restaurant->imatges }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
-                                        
-                                    
-                                    <!-- <img src="/uploads/restaurant/{{ $restaurant->imatges }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;"> -->
                                 
                                 </td>
 
