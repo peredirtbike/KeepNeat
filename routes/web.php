@@ -25,6 +25,11 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 // --------------------------- EDIT USUARI ---------------------------
 Route::get('/perfil', 'UserController@perfil')->name('perfil');
 Route::post('/perfil', 'UserController@update_avatar')->name('update_avatar');
+Route::post('/home', 'UserController@delete_user')->name('delete_user');
+
+// Route::delete('/perfil/{id}', 'UserController@delete_user')->name('delete_user');
+
+
 
 
 // --------------------------- ----------- ---------------------------

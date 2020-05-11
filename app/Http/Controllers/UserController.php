@@ -80,12 +80,20 @@ class UserController extends Controller
         $usuari->direccions_id = $direc->id;
         $usuari->save();
 
-
-
-
-
-
     	return view('perfil', array('user'=>Auth::user()), $data);
 
+    }
+
+    public function delete_user(Request $request)
+    {
+        $idUsuari = $request -> idUser;
+        $usuari = \App\User::find($idUsuari);
+
+
+        $usuari->delete();
+        // $user->delete();
+        Auth::logout();
+
+        return view('welcome');
     }
 }
