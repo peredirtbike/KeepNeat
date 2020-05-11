@@ -58,6 +58,8 @@
         <div class="panel-body">
           <form enctype='multipart/form-data' id="dropzoneForm" class="dropzone" action="{{ route('dropzone.upload') }}">
             @csrf
+            <input type="hidden" name="nameUser" id="nameUser" value="{{Auth::user()->id}}">
+
           </form>
           <div align="center">
             <button type="button" class="btn btn-info" id="submit-all">Upload</button>
@@ -74,6 +76,8 @@
         </div>
       </div>
     </div>
+
+
  </body>
 </html>
 
@@ -86,6 +90,8 @@
 
     init:function(){
       var submitButton = document.querySelector("#submit-all");
+      var nameUser = $('#nameUser').val();
+
       myDropzone = this;
 
       submitButton.addEventListener('click', function(){
@@ -109,6 +115,8 @@
 
   function load_images()
   {
+    
+
     $.ajax({
       url:"{{ route('dropzone.fetch') }}",
       success:function(data)
@@ -116,6 +124,7 @@
         $('#uploaded_image').html(data);
       }
     })
+
   }
 
   $(document).on('click', '.remove_image', function(){
