@@ -24,7 +24,7 @@
                 <input required type="file" class="form-control" name="images[]" placeholder="address" multiple>
             </div>
 
-
+            <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
             <button class="btn btn-success btn-block" type="submit">Confirmar</button>
 
         </form>

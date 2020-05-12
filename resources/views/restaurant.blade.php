@@ -14,13 +14,15 @@
                         <tr>
                             <td>Nom</td>
                             <td>Descripcio</td>
-                            <td>Imatges</td>
+                            <td>ID USER</td>
 
                         </tr>
                         @foreach ($restaurants as $restaurant)
                             <tr>
                                 <td>{{ $restaurant->nom }}</td>
                                 <td>{{ $restaurant->descripcio }}</td>
+                                <td>{{ $restaurant->id_usuari }}</td>
+
                                 <td>
                                 
                                 </td>

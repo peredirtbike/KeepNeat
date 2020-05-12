@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 05-05-2020 a las 16:56:23
+-- Tiempo de generación: 12-05-2020 a las 14:41:47
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -43,7 +43,9 @@ INSERT INTO `ciutats` (`id`, `nom`, `paisos_id`) VALUES
 (2, 'Madrid', 1),
 (5, 'Cusco', 2),
 (6, 'Lima', 2),
-(7, 'Trujillo', 2);
+(7, 'Trujillo', 2),
+(8, 'Barcelona (Argentina)', 3),
+(9, 'San Francisco', 4);
 
 -- --------------------------------------------------------
 
@@ -80,7 +82,22 @@ INSERT INTO `direccions` (`id`, `carrer`, `numero`, `pis`, `ciutats_id`) VALUES
 (14, 'Capuchon', '5', '1', 7),
 (15, 'Capuchon', '5', '1', 7),
 (16, 'Capuchon', '5', '1', 7),
-(17, 'Matanuces', '9', '3', 1);
+(17, 'Matanuces', '9', '3', 1),
+(18, 'Matanuces', '9', '3', 1),
+(19, 'Matanuces', '9', '3', 8),
+(20, 'Matanuces', '9', '3', 1),
+(21, 'Matanuces', '9', '3', 8),
+(22, 'Matanuces', '9', '3', 1),
+(23, 'Capuchon', '69', '1', 1),
+(24, 'Capuchon', '69', '1', 1),
+(25, 'Capuchon', '69', '1', 1),
+(26, 'Capuchon', '69', '1', 1),
+(27, 'Capuchon', '69', '1', 1),
+(28, 'Capuchon', '69', '1', 1),
+(29, 'DEFAULT', '0', '0', 1),
+(30, 'DEFAULT', '0', '0', 1),
+(31, 'DEFAULT', '0', '0', 1),
+(32, 'DEFAULT', '0', '0', 1);
 
 -- --------------------------------------------------------
 
@@ -135,7 +152,9 @@ CREATE TABLE `paisos` (
 
 INSERT INTO `paisos` (`id`, `nom`) VALUES
 (1, 'España'),
-(2, 'Peru');
+(2, 'Peru'),
+(3, 'Argentina'),
+(4, 'USA');
 
 -- --------------------------------------------------------
 
@@ -172,18 +191,18 @@ CREATE TABLE `restaurants` (
   `id` int(11) NOT NULL,
   `nom` varchar(45) COLLATE utf8_bin NOT NULL,
   `descripcio` varchar(500) COLLATE utf8_bin NOT NULL,
-  `imatges` longblob
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `restaurants`
 --
 
-INSERT INTO `restaurants` (`id`, `nom`, `descripcio`, `imatges`) VALUES
-(1, 'Picola', 'grande pero mala', NULL),
-(2, 'Picolahhh', 'jgbhklvhlvbhjvb', NULL),
-(3, 'kkkkkk', 'lklkijugiu', NULL),
-(4, 'gutfyugtvfcgv', 'huibgkhbg', NULL);
+INSERT INTO `restaurants` (`id`, `nom`, `descripcio`, `user_id`) VALUES
+(11, 'dasdsa', 'dsasda', 1),
+(13, 'super', '31231232131', 4),
+(14, '21231213', '3214124', 7),
+(16, 'pere', 'pereeeeeeeeeeeeeeeeeeeeeeeeeeee', 10);
 
 -- --------------------------------------------------------
 
@@ -203,7 +222,7 @@ CREATE TABLE `rol` (
 INSERT INTO `rol` (`id`, `nom`) VALUES
 (0, 'super'),
 (1, 'basic'),
-(2, 'restaurant');
+(2, 'empresari');
 
 -- --------------------------------------------------------
 
@@ -234,16 +253,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `direccions_id`, `rol_id`, `nif`, `cognoms`, `sexe`, `data_naixement`, `avatar`) VALUES
-(1, 'Gerard', 'gerard@gmail.com', NULL, '$2y$10$OkHzOLAHV0ElWUaSEOuiiubL7w.Mvlfn92pihTWjiPqyVkCh0Iesm', NULL, '2020-04-28 12:40:02', '2020-05-05 14:55:23', 17, 0, '88888856O', 'Bonastre Sivill', NULL, '2063-12-23', '1588694922.png'),
+(1, 'Gerard', 'gerard@gmail.com', NULL, '$2y$10$OkHzOLAHV0ElWUaSEOuiiubL7w.Mvlfn92pihTWjiPqyVkCh0Iesm', NULL, '2020-04-28 12:40:02', '2020-05-11 14:24:05', 28, 0, '88888856O', 'Bonastre Sivill', NULL, '2063-12-23', '1589214245.png'),
 (2, 'Pere', 'pere@gmail.com', NULL, '$2y$10$NAq64.8qgXl3m5aaQDl5AOFY8zz2f9FSsL6zvE2f/hNvo2Bufajtu', NULL, '2020-04-29 13:23:04', '2020-04-29 13:23:04', 3, 1, '21312', NULL, NULL, NULL, 'default.jpg'),
 (3, 'Basic', 'basic@gmail.com', NULL, '$2y$10$7EC1zAEKapvTbZSz/5RvHebTbQ8nwIj/HSh3noZraoFncqwdNnVh6', NULL, '2020-04-29 13:28:37', '2020-04-29 13:28:37', 1, 1, '321231', NULL, NULL, NULL, 'default.jpg'),
-(4, 'UsuariNIF', 'usuarinif@gmail.com', NULL, '$2y$10$RqP0d4bt8L5n3ihUNRNu8usyOA.236zcdBPD5mMhFSlC4v4vmpRPO', NULL, '2020-04-29 14:11:54', '2020-04-29 14:11:54', 1, 1, '4141', NULL, NULL, NULL, 'default.jpg'),
 (5, 'UsuarioBasicoNIF', 'usbasnif@gmail.com', NULL, '$2y$10$nRwuiUzciAbwAIfh8cdeDOHOcD8EnS7SQUdvAH/ehyQCn0/VgITja', NULL, '2020-04-29 14:18:12', '2020-04-29 14:18:12', 1, 1, NULL, NULL, NULL, NULL, 'default.jpg'),
 (6, 'usernif2', 'usernif2@gmail.com', NULL, '$2y$10$IuDN9EGf85A97bQV4Y8YVOu5FAtF08CKpuLaQfd49/f4hO8eWhs1C', NULL, '2020-04-29 14:20:14', '2020-04-29 14:20:14', 1, 1, '0000000G', NULL, NULL, NULL, 'default.jpg'),
 (8, 'usernif3', 'usernif3@gmail.com', NULL, '$2y$10$mbQ574UhL7VghPberYdvqeRkXa1ti0qyke87CRAsHgs.qcgxH.W2.', NULL, '2020-04-29 14:22:32', '2020-04-29 14:22:32', 1, 1, '0000000L', NULL, NULL, NULL, 'default.jpg'),
 (9, 'Maria', 'mariafernanda@gmail.com', NULL, '$2y$10$URcR9dmQrebiOtx8IE5U5.RzdUHcLqWZ8cRLVP86RtqZcA2aGoqvq', NULL, '2020-04-29 14:49:07', '2020-04-29 14:49:07', 1, 1, '56659663A', NULL, NULL, NULL, 'default.jpg'),
-(10, 'Fernandina', 'fernamarga@gmail.com', NULL, '$2y$10$Nuqsxqn6SaSIHPKMDy5/4eQhO5ZjKEuseWmYgG1edSAbrhSwR8NsW', NULL, '2020-04-29 14:51:45', '2020-04-29 14:51:45', 1, 1, '46656995A', NULL, NULL, NULL, 'default.jpg'),
-(11, 'testl', 'testult@gmail.com', NULL, '$2y$10$A8i1ktpJXtA3Q7MAA7r2aulm254o2cBBpMG4o.Q4H4bmH/5nbWlS.', NULL, '2020-04-29 14:54:19', '2020-04-29 14:54:19', 1, 1, '00000000p', 'ultim', 'home', '1554-09-26', 'default.jpg');
+(10, 'marga', 'marga@gmail.com', NULL, '$2y$10$Aar3iQGeinmnCOmjGRVfR.fx8N9xoPLkWdjvNvmFx41jjA227Op6G', NULL, '2020-05-12 12:16:04', '2020-05-12 12:16:04', 1, 1, '47744558L', 'marrrra', 'dona', '2020-05-13', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -254,9 +271,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 CREATE TABLE `valoracions` (
   `usuaris_id` int(11) NOT NULL,
   `restaurants_id` int(11) NOT NULL,
-  `data` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `data` date DEFAULT NULL,
   `comentaris` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `estrelles` int(11) DEFAULT NULL
+  `estrelles` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -346,13 +363,13 @@ ALTER TABLE `valoracions`
 -- AUTO_INCREMENT de la tabla `ciutats`
 --
 ALTER TABLE `ciutats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `direccions`
 --
 ALTER TABLE `direccions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -370,19 +387,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `paisos`
 --
 ALTER TABLE `paisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas

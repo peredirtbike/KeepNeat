@@ -37,6 +37,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function Restaurant()
+    {
+        return $this->hasOne(Restaurant::class);
+    }
+
+
     public function Direccions()
     {
         return $this->belongsTo(Direccio::class);

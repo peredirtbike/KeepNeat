@@ -27,25 +27,23 @@ Route::get('/perfil', 'UserController@perfil')->name('perfil');
 Route::post('/perfil', 'UserController@update_avatar')->name('update_avatar');
 Route::post('/home', 'UserController@delete_user')->name('delete_user');
 
-// Route::delete('/perfil/{id}', 'UserController@delete_user')->name('delete_user');
-
-
-
-
 // --------------------------- ----------- ---------------------------
-
-
 
 
 
 // --------------------------- RESTAURANT ---------------------------
 Route::get('/restaurant', 'RestaurantController@mostrar')->name('restaurant');
 
+// ---------------------creacio--------------------
+Route::get('/creacioRestaurant', 'RestaurantController@creacioRestaurant')->name('creacioRestaurant');
+Route::post('/agregaRestaurant', 'RestaurantController@agregarRestaurant')->name('agregarRestaurant');
+
+
+// ---------------------imatge---------------------
 Route::get('/imatgeRestaurant', 'RestaurantController@imatge')->name('imatgeRestaurant');
 Route::post('dropzone/upload', 'RestaurantController@upload')->name('dropzone.upload');
 Route::get('dropzone/fetch', 'RestaurantController@fetch')->name('dropzone.fetch');
 Route::get('dropzone/delete', 'RestaurantController@delete')->name('dropzone.delete');
-
 
 // --------------------------- ----------- ---------------------------
 

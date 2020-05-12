@@ -39,21 +39,49 @@ class RestaurantController extends Controller
         return view('restaurant', $data);
     }
 
+    // ------------------------------------------------ CREA REST ------------------------------------------------
+
+    public function creacioRestaurant()
+    {
+
+        return view('creacioRestaurant');
+    }
+
+    public function agregarRestaurant(Request $request)
+    {
+
+        $propRest = $request->idUser;
+
+        $propietari = \App\Restaurant::all()->where('id_usuari', $propRest);
+
+        if ($propietari->isEmpty())
+        {
+            $restAgregar = new \App\Restaurant;
+            $restAgregar-> nom = $request -> nomRest;
+            $restAgregar-> descripcio = $request -> descRest;
+            $restAgregar-> user_id = $request -> idUser;
+            $restAgregar-> save();
+
+        }
+        else{
+            dd($propietari);
+        }
+        $restaurants = \App\Restaurant::all();
+        $data["restaurants"] = $restaurants;
+        
+        return view('restaurant', $data);
+    }
+   
+
+
+    // ------------------------------------------------ IMATGE ------------------------------------------------
+
     public function imatge()
     {
 
         return view('imatgeRestaurant');
     }
 
-    // public function agregarRestaurant(Request $request)
-    // {
-        // $restAgregar = new \App\Restaurant;
-        // $restAgregar-> nom = $request -> nomRest;
-        // $restAgregar-> descripcio = $request -> descRest;
-        // $restAgregar-> save();
-
-    // }
-   
     function upload(Request $request)
     {
 
