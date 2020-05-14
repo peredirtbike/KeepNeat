@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Restaurant;
+
 
 class HomeController extends Controller
 {
@@ -23,7 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+
+        $restaurants = \App\Restaurant::paginate(6);
+        $data["restaurants"] = $restaurants;
+
+
+        return view('welcome', $data);
     }
 
 

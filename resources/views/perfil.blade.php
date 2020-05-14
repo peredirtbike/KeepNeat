@@ -116,6 +116,8 @@
               <input type="submit" class="btn btn-primary" value="Save Changes">
               <span></span>
               <input type="reset" class="btn btn-default" value="Cancel">
+              <input type="submit" style="float: right;" value="Donar de baixa" class="btn btn-danger">
+
 
 
             </div>
@@ -125,7 +127,6 @@
           @csrf
         
           <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
-          <input type="submit" value="Donar de baixa" class="btn btn-danger">
         </form>
 
       </div>

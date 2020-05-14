@@ -19,6 +19,29 @@
                 <textarea name="descRest" id="descRest" cols="30" rows="10"></textarea>
             </div>
 
+            <div class="form-group">
+                <input type="text" class="form-control" id="estrellesRest" name="estrellesRest" placeholder="Introdueix nombre d'estrelles">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="preuRest" name="preuRest" placeholder="Introdueix un rang de preus">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="adrecaRest" name="adrecaRest" placeholder="Introdueix la adreça del restaurant">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="telefonRest" name="telefonRest" placeholder="Introdueix el telèfon del restaurant">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="horariRest" name="horariRest" placeholder="Introdueix lhorari del restaurant">
+            </div>
+
+            
+            
+
             
 
             <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">

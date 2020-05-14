@@ -109,7 +109,7 @@
           <div class="carousel-item" style="background: url(assets/img/slide/slide-2.jpg);">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animated fadeInDown">Lorem Ipsum Dolor</h2>
+                <h2 class="animated fadeInDown">Reserva</h2>
                 <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
                 <div>
                   <a href="#menu" class="btn-menu animated fadeIn">Our Menu</a>
@@ -124,7 +124,7 @@
             <div class="carousel-background"><img src="assets/img/slide/slide-3.jpg" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animated fadeInDown">Sequi ea ut et est quaerat</h2>
+                <h2 class="animated fadeInDown">Donan's la teva opinió</h2>
                 <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
                 <div>
                   <a href="#menu" class="btn-menu animated fadeIn">Our Menu</a>
@@ -165,9 +165,9 @@
           <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
 
             <div class="content">
-              <h3>Eum ipsam laborum deleniti <strong>velit pariatur architecto aut nihil</strong></h3>
+              <h3><strong>Qui som?</strong></h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                Som 2 estudiants de 2n de DAW (Disseny d'aplicacions web) i venim a presentar el nostre projecte de final de grau.
               </p>
               <p class="font-italic">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -197,21 +197,28 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Why choose <span>Our Restaurant</span></h2>
-          <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+          <h2><span>Restaurants</span></h2>
+          <p>Et proposem que li donis una ullada a la nostra selecció de restaurants.</p>
         </div>
 
         <div class="row">
 
-          <div class="col-lg-4">
+          @foreach ($restaurants as $restaurant)
+          <div class="col-lg-4 mb-4">
+            <a href="{{route('restaurant_id',$restaurant->id)}}">
+
             <div class="box">
-              <span>01</span>
-              <h4>Lorem Ipsum</h4>
+            <input name="invisible" type="hidden" value="{{$restaurant->id}}">
+              <span>{{$restaurant->nom}}</span>
+              <h4>{{$restaurant->descripcio}}</h4>
               <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
             </div>
+          </a>
           </div>
+        
+          @endforeach
 
-          <div class="col-lg-4 mt-4 mt-lg-0">
+          {{-- <div class="col-lg-4 mt-4 mt-lg-0">
             <div class="box">
               <span>02</span>
               <h4>Repellat Nihil</h4>
@@ -225,10 +232,10 @@
               <h4> Ad ad velit qui</h4>
               <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
             </div>
-          </div>
+          </div> --}}
 
         </div>
-
+        {{$restaurants->links()}}
       </div>
     </section><!-- End Whu Us Section -->
 

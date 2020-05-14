@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // --------------------------- EDIT USUARI ---------------------------
@@ -32,7 +32,9 @@ Route::post('/home', 'UserController@delete_user')->name('delete_user');
 
 
 // --------------------------- RESTAURANT ---------------------------
-Route::get('/restaurant', 'RestaurantController@mostrar')->name('restaurant');
+Route::get('/restaurant', 'RestaurantController@mostrarTodos')->name('restaurant');
+Route::get('/restaurant/{id}', 'RestaurantController@mostrar_restaurante')->name('restaurant_id');
+
 
 // ---------------------creacio--------------------
 Route::get('/creacioRestaurant', 'RestaurantController@creacioRestaurant')->name('creacioRestaurant');

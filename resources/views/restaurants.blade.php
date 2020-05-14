@@ -21,7 +21,7 @@
                             <tr>
                                 <td>{{ $restaurant->nom }}</td>
                                 <td>{{ $restaurant->descripcio }}</td>
-                                <td>{{ $restaurant->id_usuari }}</td>
+                                <td>{{ $restaurant->user_id }}</td>
 
                                 <td>
                                 

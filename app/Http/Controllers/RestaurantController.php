@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
+use \App\Restaurant;
+
 
 use Image;
 use Auth;
@@ -29,14 +32,31 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function mostrar()
+    public function mostrarTodos()
     {
         $restaurants = \App\Restaurant::all();
 
         $data["restaurants"] = $restaurants;
 
 
-        return view('restaurant', $data);
+        return view('restaurants', $data);
+    }
+
+    public function mostrar_restaurante($id)
+    {
+        $restaurant = Restaurant::findOrFail($id);
+        $nom = $restaurant->nom;
+        $descripcio = $restaurant->descripcio;
+        $estrelles = $restaurant->estrelles;
+        $preu = $restaurant->preu;
+        $tipus_cuina = $restaurant->tipus_cuina;
+        $adreca = $restaurant->adreca;
+        $telefon = $restaurant->telefon;
+        $horari = $restaurant->telefon;
+
+
+
+        return view('mostra_restaurant', compact('nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
     }
 
     // ------------------------------------------------ CREA REST ------------------------------------------------
@@ -60,6 +80,16 @@ class RestaurantController extends Controller
             $restAgregar-> nom = $request -> nomRest;
             $restAgregar-> descripcio = $request -> descRest;
             $restAgregar-> user_id = $request -> idUser;
+            $restAgregar-> estrelles = $request -> estrellesRest;
+            $restAgregar-> preu = $request -> preuRest;
+            $restAgregar-> adreca = $request -> adrecaRest;
+            $restAgregar-> telefon = $request -> telefonRest;
+            $restAgregar-> horari = $request -> horariRest;
+
+
+
+
+
             $restAgregar-> save();
 
         }
@@ -69,7 +99,7 @@ class RestaurantController extends Controller
         $restaurants = \App\Restaurant::all();
         $data["restaurants"] = $restaurants;
         
-        return view('restaurant', $data);
+        return view('restaurants', $data);
     }
    
 
