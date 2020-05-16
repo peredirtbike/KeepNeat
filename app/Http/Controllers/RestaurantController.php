@@ -22,10 +22,10 @@ class RestaurantController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -45,6 +45,7 @@ class RestaurantController extends Controller
     public function mostrar_restaurante($id)
     {
         $restaurant = Restaurant::findOrFail($id);
+        $restId = $restaurant->id;
         $nom = $restaurant->nom;
         $descripcio = $restaurant->descripcio;
         $estrelles = $restaurant->estrelles;
@@ -53,10 +54,11 @@ class RestaurantController extends Controller
         $adreca = $restaurant->adreca;
         $telefon = $restaurant->telefon;
         $horari = $restaurant->telefon;
+        
 
 
 
-        return view('mostra_restaurant', compact('nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
+        return view('mostra_restaurant', compact('restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
     }
 
     // ------------------------------------------------ CREA REST ------------------------------------------------
@@ -106,16 +108,18 @@ class RestaurantController extends Controller
 
     // ------------------------------------------------ IMATGE ------------------------------------------------
 
-    public function imatge()
+    public function imatge($id)
     {
+        $restaurant = Restaurant::findOrFail($id);
+        $id_restaurant = $restaurant->id;
 
-        return view('imatgeRestaurant');
+        return view('imatgeRestaurant', compact('id_restaurant'));
     }
 
     function upload(Request $request)
     {
 
-        $usuariFolder = $request -> nameUser;
+        $usuariFolder = $request -> idRest;
 
         $image = $request->file('file');
 
@@ -126,17 +130,17 @@ class RestaurantController extends Controller
         return response()->json(['success' => $imageName]);
     }
 
-    function fetch()
+    function fetch(Request $request)
     {
-        $usuariFolder = Auth::user()->id;
+        $idRestaurant = $request->id;
 
-        $images = \File::allFiles(public_path('uploads/restaurant/'.$usuariFolder));
+        $images = \File::allFiles(public_path('uploads/restaurant/'.$idRestaurant));
         $output = '<div class="row">';
         foreach($images as $image)
         {
         $output .= '
         <div class="col-md-2" style="margin-bottom:16px;" align="center">
-                    <img src="'.asset('uploads/restaurant/'.$usuariFolder.'/' . $image->getFilename()).'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
+                    <img src="'.asset('uploads/restaurant/'.$idRestaurant.'/' . $image->getFilename()).'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
                     <button type="button" class="btn btn-link remove_image" id="'.$image->getFilename().'">Remove</button>
                 </div>
         ';
@@ -147,11 +151,10 @@ class RestaurantController extends Controller
 
     function delete(Request $request)
     {
-        $usuariFolder = Auth::user()->id;
-
+        $idRestaurant = $request->id;
      if($request->get('name'))
      {
-      \File::delete(public_path('uploads/restaurant/'.$usuariFolder. '/' . $request->get('name')));
+      \File::delete(public_path('uploads/restaurant/'.$idRestaurant. '/' . $request->get('name')));
      }
     }
 }

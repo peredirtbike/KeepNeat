@@ -58,7 +58,7 @@
         <div class="panel-body">
           <form enctype='multipart/form-data' id="dropzoneForm" class="dropzone" action="{{ route('dropzone.upload') }}">
             @csrf
-            <input type="hidden" name="nameUser" id="nameUser" value="{{Auth::user()->id}}">
+            <input type="hidden" name="idRest" id="idRest" value="{{$id_restaurant}}">
 
           </form>
           <div align="center">
@@ -119,6 +119,7 @@
 
     $.ajax({
       url:"{{ route('dropzone.fetch') }}",
+      data:{id:$('#idRest').val()},
       success:function(data)
       {
         $('#uploaded_image').html(data);
@@ -131,7 +132,7 @@
     var name = $(this).attr('id');
     $.ajax({
       url:"{{ route('dropzone.delete') }}",
-      data:{name : name},
+      data:{name : name,id:$('#idRest').val()}, 
       success:function(data){
         load_images();
       }

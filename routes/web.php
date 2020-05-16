@@ -25,7 +25,7 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 // --------------------------- EDIT USUARI ---------------------------
 Route::get('/perfil', 'UserController@perfil')->name('perfil');
 Route::post('/perfil', 'UserController@update_avatar')->name('update_avatar');
-Route::post('/home', 'UserController@delete_user')->name('delete_user');
+Route::post('/delete', 'UserController@delete_user')->name('delete_user');
 
 // --------------------------- ----------- ---------------------------
 
@@ -42,7 +42,7 @@ Route::post('/agregaRestaurant', 'RestaurantController@agregarRestaurant')->name
 
 
 // ---------------------imatge---------------------
-Route::get('/imatgeRestaurant', 'RestaurantController@imatge')->name('imatgeRestaurant');
+Route::get('/imatgeRestaurant/{id}', 'RestaurantController@imatge')->name('imatgeRestaurant');
 Route::post('dropzone/upload', 'RestaurantController@upload')->name('dropzone.upload');
 Route::get('dropzone/fetch', 'RestaurantController@fetch')->name('dropzone.fetch');
 Route::get('dropzone/delete', 'RestaurantController@delete')->name('dropzone.delete');
