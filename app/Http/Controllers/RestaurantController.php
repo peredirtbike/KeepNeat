@@ -42,6 +42,65 @@ class RestaurantController extends Controller
         return view('restaurants', $data);
     }
 
+    // ------------------------------------------------ MODI REST ------------------------------------------------
+
+    public function modificaRestaurant($id)
+    {
+        //Busqueda
+        $restaurant = Restaurant::findOrFail($id);
+        $restId = $restaurant->id;
+        $nom = $restaurant->nom;
+        $descripcio = $restaurant->descripcio;
+        $estrelles = $restaurant->estrelles;
+        $preu = $restaurant->preu;
+        $tipus_cuina = $restaurant->tipus_cuina;
+        $adreca = $restaurant->adreca;
+        $telefon = $restaurant->telefon;
+        $horari = $restaurant->horari;
+        $idPropi = $restaurant->user_id;
+
+        return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
+   
+    }
+
+    public function updateRestaurant($id, Request $request)
+    {
+        $restId = $request->idRest;
+
+        $restaurant = Restaurant::findOrFail($restId);
+
+        $restaurant->nom = $request -> nNom;
+        $nom = $request->nNom;
+
+        $restaurant->descripcio = $request -> nDescripcio;
+        $descripcio = $request->nDescripcio;
+
+        $restaurant->estrelles = $request -> nEstrelles;
+        $estrelles = $request->nEstrelles;
+
+        $restaurant->preu = $request -> nPreu;
+        $preu = $request->nPreu;
+
+        $restaurant->tipus_cuina = $request -> nTipus;
+        $tipus_cuina = $request->nTipus;
+
+        $restaurant->adreca = $request -> nAdreca;
+        $adreca = $request->nAdreca;
+
+        $restaurant->telefon = $request -> nTelefon;
+        $telefon = $request->nTelefon;
+
+        $restaurant->horari = $request -> nHorari;
+        $horari = $request->nHorari;
+
+        $restaurant->save();
+
+        $idPropi = $restaurant->user_id;
+
+
+        return view('mostra_restaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
+    }
+
     public function mostrar_restaurante($id)
     {
         $restaurant = Restaurant::findOrFail($id);
@@ -53,12 +112,11 @@ class RestaurantController extends Controller
         $tipus_cuina = $restaurant->tipus_cuina;
         $adreca = $restaurant->adreca;
         $telefon = $restaurant->telefon;
-        $horari = $restaurant->telefon;
-        
+        $horari = $restaurant->horari;
+        $idPropi = $restaurant->user_id;
 
 
-
-        return view('mostra_restaurant', compact('restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
+        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
     }
 
     // ------------------------------------------------ CREA REST ------------------------------------------------
@@ -71,10 +129,9 @@ class RestaurantController extends Controller
 
     public function agregarRestaurant(Request $request)
     {
-
         $propRest = $request->idUser;
 
-        $propietari = \App\Restaurant::all()->where('id_usuari', $propRest);
+        $propietari = \App\Restaurant::all()->where('user_id', "=", $propRest);
 
         if ($propietari->isEmpty())
         {
@@ -88,23 +145,32 @@ class RestaurantController extends Controller
             $restAgregar-> telefon = $request -> telefonRest;
             $restAgregar-> horari = $request -> horariRest;
 
-
-
-
-
             $restAgregar-> save();
+            $id = $restAgregar->id;
 
         }
         else{
             dd($propietari);
         }
-        $restaurants = \App\Restaurant::all();
-        $data["restaurants"] = $restaurants;
+        // $restaurants = \App\Restaurant::all();
+        // $data["restaurants"] = $restaurants;
         
-        return view('restaurants', $data);
-    }
-   
+        // return view('restaurants', $data);
 
+        $restaurant = Restaurant::findOrFail($id);
+        $restId = $restaurant->id;
+        $nom = $restaurant->nom;
+        $descripcio = $restaurant->descripcio;
+        $estrelles = $restaurant->estrelles;
+        $preu = $restaurant->preu;
+        $tipus_cuina = $restaurant->tipus_cuina;
+        $adreca = $restaurant->adreca;
+        $telefon = $restaurant->telefon;
+        $horari = $restaurant->horari;
+
+        return view('mostra_restaurant', compact('restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
+   
+    }
 
     // ------------------------------------------------ IMATGE ------------------------------------------------
 

@@ -20,14 +20,16 @@
             <p><strong>TIPUS DE CUINA: </strong>{{$tipus_cuina}}</p>
         </div>
 
-
-
         <div class="col-md-4">
             <h2>Ubicació i contacte</h2>
             <p><strong>ADREÇA:</strong> {{$adreca}}</p>
             <p><strong>TELEFON:</strong> {{$telefon}}</p>
             <p><strong>HORARI:</strong> {{$horari}}</p>
         </div>
+
+        @if(Auth::user()->id == $idPropi)
+          <a class="dropdown-item" id="{{$idPropi}}" href="{{ route('modificaRestaurant',$restId) }}">Modificar</a>
+        @endif
 
     </div>
 

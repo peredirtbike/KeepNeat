@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 12-05-2020 a las 14:41:47
+-- Tiempo de generación: 16-05-2020 a las 17:35:49
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -97,7 +96,8 @@ INSERT INTO `direccions` (`id`, `carrer`, `numero`, `pis`, `ciutats_id`) VALUES
 (29, 'DEFAULT', '0', '0', 1),
 (30, 'DEFAULT', '0', '0', 1),
 (31, 'DEFAULT', '0', '0', 1),
-(32, 'DEFAULT', '0', '0', 1);
+(32, 'DEFAULT', '0', '0', 1),
+(33, 'DEFAULT', '0', '0', 9);
 
 -- --------------------------------------------------------
 
@@ -191,6 +191,12 @@ CREATE TABLE `restaurants` (
   `id` int(11) NOT NULL,
   `nom` varchar(45) COLLATE utf8_bin NOT NULL,
   `descripcio` varchar(500) COLLATE utf8_bin NOT NULL,
+  `estrelles` int(5) DEFAULT NULL,
+  `preu` varchar(11) COLLATE utf8_bin NOT NULL,
+  `tipus_cuina` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `adreca` varchar(255) COLLATE utf8_bin NOT NULL,
+  `telefon` int(9) NOT NULL,
+  `horari` varchar(255) COLLATE utf8_bin NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -198,11 +204,12 @@ CREATE TABLE `restaurants` (
 -- Volcado de datos para la tabla `restaurants`
 --
 
-INSERT INTO `restaurants` (`id`, `nom`, `descripcio`, `user_id`) VALUES
-(11, 'dasdsa', 'dsasda', 1),
-(13, 'super', '31231232131', 4),
-(14, '21231213', '3214124', 7),
-(16, 'pere', 'pereeeeeeeeeeeeeeeeeeeeeeeeeeee', 10);
+INSERT INTO `restaurants` (`id`, `nom`, `descripcio`, `estrelles`, `preu`, `tipus_cuina`, `adreca`, `telefon`, `horari`, `user_id`) VALUES
+(11, 'El asador argentino xino tambien', 'Asador dedicat al menjar argentí', 100, '100', 'medioxina', 'Cal mascatarro', 699696332, 'Dilluns-Diumenge', 1),
+(13, 'Tai kwai chi', 'Komila xina para yeba a tu casita', 0, '0', '', '', 0, '', 4),
+(14, 'Zagreb armani', 'Ki pasa amego quiere comida buina?', 0, '0', '', '', 0, '', 7),
+(16, 'El racó de\'n pere', 'ajajajajaj', 0, '0', '', '', 0, '', 10),
+(17, 'La pipa de la pau', 'Fuma\'t els porrilos a gust', 0, '0', '', '', 0, '', 11);
 
 -- --------------------------------------------------------
 
@@ -260,7 +267,10 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (6, 'usernif2', 'usernif2@gmail.com', NULL, '$2y$10$IuDN9EGf85A97bQV4Y8YVOu5FAtF08CKpuLaQfd49/f4hO8eWhs1C', NULL, '2020-04-29 14:20:14', '2020-04-29 14:20:14', 1, 1, '0000000G', NULL, NULL, NULL, 'default.jpg'),
 (8, 'usernif3', 'usernif3@gmail.com', NULL, '$2y$10$mbQ574UhL7VghPberYdvqeRkXa1ti0qyke87CRAsHgs.qcgxH.W2.', NULL, '2020-04-29 14:22:32', '2020-04-29 14:22:32', 1, 1, '0000000L', NULL, NULL, NULL, 'default.jpg'),
 (9, 'Maria', 'mariafernanda@gmail.com', NULL, '$2y$10$URcR9dmQrebiOtx8IE5U5.RzdUHcLqWZ8cRLVP86RtqZcA2aGoqvq', NULL, '2020-04-29 14:49:07', '2020-04-29 14:49:07', 1, 1, '56659663A', NULL, NULL, NULL, 'default.jpg'),
-(10, 'marga', 'marga@gmail.com', NULL, '$2y$10$Aar3iQGeinmnCOmjGRVfR.fx8N9xoPLkWdjvNvmFx41jjA227Op6G', NULL, '2020-05-12 12:16:04', '2020-05-12 12:16:04', 1, 1, '47744558L', 'marrrra', 'dona', '2020-05-13', 'default.jpg');
+(10, 'marga', 'marga@gmail.com', NULL, '$2y$10$Aar3iQGeinmnCOmjGRVfR.fx8N9xoPLkWdjvNvmFx41jjA227Op6G', NULL, '2020-05-12 12:16:04', '2020-05-12 12:16:04', 1, 1, '47744558L', 'marrrra', 'dona', '2020-05-13', 'default.jpg'),
+(11, 'Pere', 'peredirtbike@gmail.com', NULL, '$2y$10$l8uP/dJBUQtRChjz5s/34etJWudWfFcQYTBsYIa5jknpvYlsr.LMO', NULL, '2020-05-12 18:27:25', '2020-05-12 18:27:25', 1, 2, '47747322N', 'Garcia', 'home', '1998-11-03', 'default.jpg'),
+(12, 'xavi', 'xavi@gmail.com', NULL, '$2y$10$rckpOGfLB5sj019OizXbDeOfGHb6w4RQt9U5r.7S179e5/6qNXEvi', NULL, '2020-05-16 15:21:47', '2020-05-16 15:24:25', 33, 1, '65654995G', 'ciscu', 'home', '2016-05-06', 'default.jpg'),
+(13, 'Pepe', 'pepe@gmail.com', NULL, '$2y$10$Dxbof9vfOJyxMOZpQJIUb.LyL6dz3NX7vF.frP3hswzJPitumbkru', NULL, '2020-05-16 15:32:09', '2020-05-16 15:32:09', 1, 1, '46652112F', 'benid', 'home', '2020-05-08', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -369,7 +379,7 @@ ALTER TABLE `ciutats`
 -- AUTO_INCREMENT de la tabla `direccions`
 --
 ALTER TABLE `direccions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -393,13 +403,13 @@ ALTER TABLE `paisos`
 -- AUTO_INCREMENT de la tabla `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
@@ -418,23 +428,10 @@ ALTER TABLE `direccions`
   ADD CONSTRAINT `fk_direcciones_ciudades1` FOREIGN KEY (`ciutats_id`) REFERENCES `ciutats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `reserves`
---
-ALTER TABLE `reserves`
-  ADD CONSTRAINT `fk_usuaris_has_restaurants_usuaris2` FOREIGN KEY (`usuaris_id`) REFERENCES `usuaris` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_user_rol` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`);
-
---
--- Filtros para la tabla `valoracions`
---
-ALTER TABLE `valoracions`
-  ADD CONSTRAINT `fk_usuaris_has_restaurants_restaurants1` FOREIGN KEY (`restaurants_id`) REFERENCES `restaurants` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_usuaris_has_restaurants_usuaris1` FOREIGN KEY (`usuaris_id`) REFERENCES `usuaris` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

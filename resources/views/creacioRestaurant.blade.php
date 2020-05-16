@@ -39,11 +39,6 @@
                 <input type="text" class="form-control" id="horariRest" name="horariRest" placeholder="Introdueix lhorari del restaurant">
             </div>
 
-            
-            
-
-            
-
             <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
             <button class="btn btn-success btn-block" type="submit">Confirmar</button>
 

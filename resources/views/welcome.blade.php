@@ -55,12 +55,18 @@
           <li><a href="#contact">Contacte</a></li>
   @if (Route::has('login'))
                     @auth
+                    
+                    
+
                     <li class="ml-5 nav-item dropdown">
                       <a class="nav-link dropdown-toggle ml-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name}} </a>
                       <img  src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:5px; border-radius:50%">
 
                       <div class="dropdown-menu" style="background-color: darkgray" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('perfil') }}">Perfil</a>
+                        @if (Auth::user()->rol_id != 1)
+                          <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('creacioRestaurant') }}">Creacio de Restaurant</a>
+                        @endif
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                       </div>
