@@ -27,9 +27,12 @@
             <p><strong>HORARI:</strong> {{$horari}}</p>
         </div>
 
-        @if(Auth::user()->id == $idPropi)
-          <a class="dropdown-item" id="{{$idPropi}}" href="{{ route('modificaRestaurant',$restId) }}">Modificar</a>
+        @if(Auth::user())
+          @if(Auth::user()->id == $idPropi)
+            <a class="dropdown-item" id="{{$idPropi}}" href="{{ route('modificaRestaurant',$restId) }}">Modificar</a>
+          @endif
         @endif
+
 
     </div>
 
