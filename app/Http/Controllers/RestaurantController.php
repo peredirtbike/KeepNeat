@@ -158,6 +158,7 @@ class RestaurantController extends Controller
         // return view('restaurants', $data);
 
         $restaurant = Restaurant::findOrFail($id);
+
         $restId = $restaurant->id;
         $nom = $restaurant->nom;
         $descripcio = $restaurant->descripcio;
@@ -168,7 +169,9 @@ class RestaurantController extends Controller
         $telefon = $restaurant->telefon;
         $horari = $restaurant->horari;
 
-        return view('mostra_restaurant', compact('restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
+        $idPropi = Auth::user()->id;
+
+        return view('mostra_restaurant', compact('idPropi','restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
    
     }
 
