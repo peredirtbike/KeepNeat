@@ -64,9 +64,19 @@
 
                       <div class="dropdown-menu" style="background-color: darkgray" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('perfil') }}">Perfil</a>
+
                         @if (Auth::user()->rol_id != 1)
-                          <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('creacioRestaurant') }}">Creacio de Restaurant</a>
+                          @if(\App\Restaurant::all()->where('user_id',Auth::user()->id)->isEmpty())
+                            <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('creacioRestaurant') }}">Creacio de Restaurant</a>
+                          @else
+                            @foreach ($idRestaurant as $object)
+                              <a class="dropdown-item" id="{{ Auth::user()->name }}" href="{{ route('modificaRestaurant', $object->id) }}">Edita el teu Restaurant</a>
+                            @endforeach
+                          @endif
+
                         @endif
+
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                       </div>

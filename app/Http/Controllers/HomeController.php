@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Restaurant;
+use Auth;
 
 
 class HomeController extends Controller
@@ -25,12 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        if(Auth::user()){
+            $idRestaurant = Restaurant::where('user_id',Auth::user()->id)->get('id');
+        }
         $restaurants = \App\Restaurant::paginate(6);
         $data["restaurants"] = $restaurants;
 
 
-        return view('welcome', $data);
+        return view('welcome', $data, compact('idRestaurant'));
     }
 
 
