@@ -36,6 +36,8 @@ Route::get('/restaurant', 'RestaurantController@mostrarTodos')->name('restaurant
 Route::get('/restaurant/{id}', 'RestaurantController@mostrar_restaurante')->name('restaurant_id');
 Route::get('/modificaRestaurant/{id}', 'RestaurantController@modificaRestaurant')->name('modificaRestaurant');
 Route::post('/restaurant/{id}', 'RestaurantController@updateRestaurant')->name('updateRestaurant');
+Route::post('/restaurant/{id}', 'RestaurantController@opinioSend')->name('opinioSend');
+
 
 
 

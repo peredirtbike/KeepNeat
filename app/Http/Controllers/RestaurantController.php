@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use \App\Restaurant;
 
+use DateTime;
 
 use Image;
 use Auth;
@@ -59,7 +60,9 @@ class RestaurantController extends Controller
         $horari = $restaurant->horari;
         $idPropi = $restaurant->user_id;
 
-        return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
+        $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
+
+        return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
    
     }
 
@@ -115,9 +118,46 @@ class RestaurantController extends Controller
         $horari = $restaurant->horari;
         $idPropi = $restaurant->user_id;
 
+        $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
+
+
+        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
     }
+
+    // ------------------------------------------------ OPINIO ---------------------------------------------------
+
+    public function opinioSend(Request $request, $id)
+    {
+        $dataPujada = new DateTime(); 
+
+        $opinioAgrega = new \App\Opinio;
+
+        $opinioAgrega->usuari_id = Auth::user()->id;
+        $opinioAgrega->restaurant_id = $id;
+        $opinioAgrega->data = $dataPujada->format('Y-m-d H:i:s');
+        $opinioAgrega->comentari = $request->opinio;
+        $opinioAgrega->puntuacio = $request->puntuacio;
+        $opinioAgrega->save(); 
+
+        $restaurant = Restaurant::findOrFail($id);
+        $restId = $restaurant->id;
+        $nom = $restaurant->nom;
+        $descripcio = $restaurant->descripcio;
+        $estrelles = $restaurant->estrelles;
+        $preu = $restaurant->preu;
+        $tipus_cuina = $restaurant->tipus_cuina;
+        $adreca = $restaurant->adreca;
+        $telefon = $restaurant->telefon;
+        $horari = $restaurant->horari;
+        $idPropi = $restaurant->user_id;
+
+        $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
+
+        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
+    }
+
+
 
     // ------------------------------------------------ CREA REST ------------------------------------------------
 
@@ -171,7 +211,10 @@ class RestaurantController extends Controller
 
         $idPropi = Auth::user()->id;
 
-        return view('mostra_restaurant', compact('idPropi','restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
+        $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
+
+
+        return view('mostra_restaurant', compact('idPropi','restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
    
     }
 
