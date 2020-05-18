@@ -53,6 +53,9 @@
             </div>
             <input type="hidden" name="idRest" id="idRest" value="{{$restId}}">
             <input type="submit" value="Editar">
+
+            <a href="{{ route('imatgeRestaurant',$restId) }}" type="button" class="btn btn-default">Imatges del restaurant</a>
+
         </form>
 
 

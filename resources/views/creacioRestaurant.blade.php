@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
        
     <div class="col-md-5">
-        <h3 class="text-center mb-4 mt-2">Puja imatges del teu Restaurant</h3>
+        <h3 class="text-center mb-4 mt-2">Crea aquí el teu Restaurant</h3>
 
         <form enctype="multipart/form-data" action="{{ route('agregarRestaurant') }}" method="post">
         {{csrf_field()}}
@@ -41,7 +41,6 @@
 
             <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
             <button class="btn btn-success btn-block" type="submit">Confirmar</button>
-
         </form>
 
         @if(session('agregar'))
