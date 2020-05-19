@@ -18,7 +18,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Descripció</label>
-                  <textarea class="form-control" type="text" name="nDescripcio" id="nDescripcio" value="{{$descripcio}}" placeholder="Introdueix una descripció per al teu restaurant..."></textarea>
+                  <input class="form-control" type="text" name="nDescripcio" id="nDescripcio" value="{{$descripcio}}" placeholder="{{$descripcio}}">
 
                 </div>
             </div>
@@ -31,14 +31,6 @@
                 </div>
             </div>
 
-            {{-- <div class="form-row">
-                <div class="form-group col-md-1">
-                  <label for="inputEmail4">Puntuació:</label>
-                  <input class="form-control" type="text" name="nEstrelles" id="nEstrelles" value="{{$estrelles}}" placeholder="{{$estrelles}} estrelles">
-
-                </div>
-            </div> --}}
-
             <div class="form-row">
                 <div class="form-group col-md-2">
                   <label for="inputEmail4">Rang de preus:</label>
@@ -49,7 +41,6 @@
 
             <div class="form-row">
                 <p> <strong>Localització/Contacte:</strong></p>
-
             </div>
 
             <div class="form-row">
@@ -69,19 +60,18 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Horari</label>
-                  <textarea class="form-control" type="text" name="nHorari" id="nHorari" value="{{$horari}}" placeholder="{{$horari}}"></textarea>
+                  <input class="form-control" type="text" name="nHorari" id="nHorari" value="{{$horari}}" placeholder="{{$horari}}">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                  <input type="submit" class="btn btn-primary mr-2" value="Guardar">
-                  <a style="color: black" href="{{route('home')}}">Cancel</a>
-
                   <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
                   <input type="hidden" name="idDir" id="idDir" value="{{Auth::user()->direccions_id}}">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-  
+                  
+                  <input type="submit" class="btn btn-primary mr-2" value="Guardar">
+                  <a style="color: black" href="{{route('home')}}">Cancel</a>
                 </div>
             </div>
 
