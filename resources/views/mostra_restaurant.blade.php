@@ -34,7 +34,8 @@
             <form action="{{ route('opinioSend',$restId) }}" method="post">
             @csrf
 
-              Puntuacio: <input type="number" name="puntuacio" id="puntuacio"><br><br>
+              Puntuacio: <input type="number" name="puntuacio" id="puntuacio" min="1" max="100">
+              <br><br>
               Opinio: <br> <textarea name="opinio" id="opinio" cols="30" rows="10"></textarea>
               <input type="submit" value="Enviar">
               <input type="hidden" name="idRest" id="idRest" value="{{$restId}}">
