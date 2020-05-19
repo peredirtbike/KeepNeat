@@ -1,70 +1,93 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-      <h2 class="display-4 mb-4">{{$nom}}</h2>
-      <p></p>
-    </div>
-  </div>
+    <form class="form-horizontal" action="{{ route('updateRestaurant',$restId) }}" role="form" method="POST">
+        <div class="container">
+            <h2 class="display-4 mb-4">{{$nom}}</h2>
 
-  <div class="container">
-
-    <!-- Example row of columns -->
-    <div class="row">
-        <form class="form-horizontal" action="{{ route('updateRestaurant', $restId) }}" role="form" method="POST">
-        @csrf
-            <div class="col-md-8">
-                <h2>Detalls</h2>
-
-                <p><strong>NOM: </strong>
-                    <input type="text" name="nNom" id="nNom" value="{{$nom}}" placeholder="{{$nom}}">
-                </p>
-
-                <p><strong>DESCRIPCIÓ: </strong>
-                    <input type="text" name="nDescripcio" id="nDescripcio" value="{{$descripcio}}" placeholder="{{$descripcio}}">
-                </p>
-
-                <p><strong>PUNTUACIO: </strong>
-                    <input type="text" name="nEstrelles" id="nEstrelles" value="{{$estrelles}}" placeholder="{{$estrelles}} estrelles">
-                </p>
-
-                <p><strong>RANG DE PREUS: </strong>
-                    <input type="text" name="nPreu" id="nPreu" value="{{$preu}}" placeholder="{{$preu}} €">
-                </p>
-
-                <p><strong>TIPUS DE CUINA: </strong>
-                    <input type="text" name="nTipus" id="nTipus" value="{{$tipus_cuina}}" placeholder="{{$tipus_cuina}}">
-                </p>
+            <div class="form-row">
+                <p> <strong> Dades del restaurant:</strong></p>
+              </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputEmail4">Nom del restaurant </label>
+                  <input class="form-control" type="text" name="nNom" id="nNom" value="{{$nom}}" placeholder="Introdueix un nom per al teu restaurant...">
+                </div>
             </div>
 
-            <div class="col-md-4">
-                <h2>Ubicació i contacte</h2>
-                <p><strong>ADREÇA:</strong> 
-                    <input type="text" name="nAdreca" id="nAdreca" value="{{$adreca}}" placeholder="{{$adreca}}">
-                </p>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Descripció</label>
+                  <textarea class="form-control" type="text" name="nDescripcio" id="nDescripcio" value="{{$descripcio}}" placeholder="Introdueix una descripció per al teu restaurant..."></textarea>
 
-                <p><strong>TELEFON:</strong> 
-                    <input type="text" name="nTelefon" id="nTelefon" value="{{$telefon}}" placeholder="{{$telefon}}">
-                </p>
-
-                <p><strong>HORARI:</strong> 
-                    <input type="text" name="nHorari" id="nHorari" value="{{$horari}}" placeholder="{{$horari}}">
-                </p>
+                </div>
             </div>
-            <input type="hidden" name="idRest" id="idRest" value="{{$restId}}">
-            <input type="submit" value="Editar">
 
-            <a href="{{ route('imatgeRestaurant',$restId) }}" type="button" class="btn btn-default">Imatges del restaurant</a>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="inputEmail4">Tipus de cuina</label>
+                  <input class="form-control" type="text" name="nTipus" id="nTipus" value="{{$tipus_cuina}}" placeholder="{{$tipus_cuina}}">
 
-        </form>
+                </div>
+            </div>
+
+            {{-- <div class="form-row">
+                <div class="form-group col-md-1">
+                  <label for="inputEmail4">Puntuació:</label>
+                  <input class="form-control" type="text" name="nEstrelles" id="nEstrelles" value="{{$estrelles}}" placeholder="{{$estrelles}} estrelles">
+
+                </div>
+            </div> --}}
+
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="inputEmail4">Rang de preus:</label>
+                  <input class="form-control" type="text" name="nPreu" id="nPreu" value="{{$preu}}" placeholder="{{$preu}} €">
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p> <strong>Localització/Contacte:</strong></p>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Adreça</label>
+                  <input class="form-control" type="text" name="nAdreca" id="nAdreca" value="{{$adreca}}" placeholder="{{$adreca}}">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="inputEmail4">Telèfon de contacte</label>
+                  <input class="form-control" type="text" name="nTelefon" id="nTelefon" value="{{$telefon}}" placeholder="{{$telefon}}">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Horari</label>
+                  <textarea class="form-control" type="text" name="nHorari" id="nHorari" value="{{$horari}}" placeholder="{{$horari}}"></textarea>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="submit" class="btn btn-primary mr-2" value="Guardar">
+                  <a style="color: black" href="{{route('home')}}">Cancel</a>
+
+                  <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
+                  <input type="hidden" name="idDir" id="idDir" value="{{Auth::user()->direccions_id}}">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  
+                </div>
+            </div>
 
 
-    </div>
 
-    <hr>
+        </div>
+    </form>
 
-    <footer>
-      <p>&copy; Keep n' Eat 2020</p>
-    </footer>
-  </div> <!-- /container -->
 @endsection

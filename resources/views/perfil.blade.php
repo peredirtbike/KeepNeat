@@ -110,7 +110,7 @@
 
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <input type="submit" class="btn btn-primary mr-2" value="Save Changes">
+                  <input type="submit" class="btn btn-primary mr-2" value="Guardar">
                   <a style="color: black" href="{{route('home')}}">Cancel</a>
 
                   <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
@@ -118,6 +118,7 @@
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   
                 </div>
+              
 
 
                 <span></span>
@@ -129,7 +130,7 @@
       
                 <input type="submit" style="float:right;" value="Donar de baixa" class="btn btn-danger">
               </div>
-                </div>
+              </div>
                 <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
               </form>
               </div>

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 16-05-2020 a las 17:35:49
+-- Tiempo de generación: 19-05-2020 a las 11:51:44
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -138,6 +139,38 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `opinions`
+--
+
+CREATE TABLE `opinions` (
+  `id` int(11) NOT NULL,
+  `usuari_id` int(11) NOT NULL,
+  `restaurant_id` int(11) NOT NULL,
+  `comentari` varchar(500) COLLATE utf8_bin NOT NULL,
+  `puntuacio` int(11) NOT NULL,
+  `data` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `opinions`
+--
+
+INSERT INTO `opinions` (`id`, `usuari_id`, `restaurant_id`, `comentari`, `puntuacio`, `data`) VALUES
+(1, 1, 16, 'dsafas', 13, '2009-02-15 15:28:53'),
+(2, 1, 16, 'fasdfasg', 3425, '2009-02-15 15:29:02'),
+(3, 1, 16, 'ygfcighcvjlg', 890, '2009-02-15 15:29:36'),
+(4, 1, 16, 'ygfcighcvjlg', 890, '2009-02-15 15:32:13'),
+(5, 1, 16, 'ygfcighcvjlg', 890, '2009-02-15 15:32:23'),
+(6, 1, 16, 'ygfcighcvjlg', 890, '2009-02-15 15:39:09'),
+(7, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:39:19'),
+(8, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:42:34'),
+(9, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:42:47'),
+(10, 1, 16, 'gadscgafdcv', 51, '2020-05-18 14:43:49'),
+(11, 1, 16, 'fdsafasfsaas', 2, '2020-05-18 14:43:54');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `paisos`
 --
 
@@ -205,11 +238,13 @@ CREATE TABLE `restaurants` (
 --
 
 INSERT INTO `restaurants` (`id`, `nom`, `descripcio`, `estrelles`, `preu`, `tipus_cuina`, `adreca`, `telefon`, `horari`, `user_id`) VALUES
-(11, 'El asador argentino xino tambien', 'Asador dedicat al menjar argentí', 100, '100', 'medioxina', 'Cal mascatarro', 699696332, 'Dilluns-Diumenge', 1),
+(11, 'El asador argentino xino tambien', 'Asador dedicat al menjar argentí', 100, '100', 'medioxina', 'tarantino', 699696332, 'Dilluns-Diumenge', 1),
 (13, 'Tai kwai chi', 'Komila xina para yeba a tu casita', 0, '0', '', '', 0, '', 4),
 (14, 'Zagreb armani', 'Ki pasa amego quiere comida buina?', 0, '0', '', '', 0, '', 7),
 (16, 'El racó de\'n pere', 'ajajajajaj', 0, '0', '', '', 0, '', 10),
-(17, 'La pipa de la pau', 'Fuma\'t els porrilos a gust', 0, '0', '', '', 0, '', 11);
+(17, 'La pipa de la pau', 'Fuma\'t els porrilos a gust', 0, '0', '', '', 0, '', 11),
+(18, 'daddaads', 'ghvuvcgjuvb', 60, '100', NULL, 'hcvfvgb jn', 699665582, 'Dilluns - Diumenge', 8),
+(19, 'Papanatas', 'patatas fritas', 50, '10-58', NULL, 'Avenida callefria', 644145232, 'Dilluns - Diumenge', 6);
 
 -- --------------------------------------------------------
 
@@ -264,27 +299,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (2, 'Pere', 'pere@gmail.com', NULL, '$2y$10$NAq64.8qgXl3m5aaQDl5AOFY8zz2f9FSsL6zvE2f/hNvo2Bufajtu', NULL, '2020-04-29 13:23:04', '2020-04-29 13:23:04', 3, 1, '21312', NULL, NULL, NULL, 'default.jpg'),
 (3, 'Basic', 'basic@gmail.com', NULL, '$2y$10$7EC1zAEKapvTbZSz/5RvHebTbQ8nwIj/HSh3noZraoFncqwdNnVh6', NULL, '2020-04-29 13:28:37', '2020-04-29 13:28:37', 1, 1, '321231', NULL, NULL, NULL, 'default.jpg'),
 (5, 'UsuarioBasicoNIF', 'usbasnif@gmail.com', NULL, '$2y$10$nRwuiUzciAbwAIfh8cdeDOHOcD8EnS7SQUdvAH/ehyQCn0/VgITja', NULL, '2020-04-29 14:18:12', '2020-04-29 14:18:12', 1, 1, NULL, NULL, NULL, NULL, 'default.jpg'),
-(6, 'usernif2', 'usernif2@gmail.com', NULL, '$2y$10$IuDN9EGf85A97bQV4Y8YVOu5FAtF08CKpuLaQfd49/f4hO8eWhs1C', NULL, '2020-04-29 14:20:14', '2020-04-29 14:20:14', 1, 1, '0000000G', NULL, NULL, NULL, 'default.jpg'),
-(8, 'usernif3', 'usernif3@gmail.com', NULL, '$2y$10$mbQ574UhL7VghPberYdvqeRkXa1ti0qyke87CRAsHgs.qcgxH.W2.', NULL, '2020-04-29 14:22:32', '2020-04-29 14:22:32', 1, 1, '0000000L', NULL, NULL, NULL, 'default.jpg'),
+(6, 'usernif2', 'usernif2@gmail.com', NULL, '$2y$10$IuDN9EGf85A97bQV4Y8YVOu5FAtF08CKpuLaQfd49/f4hO8eWhs1C', NULL, '2020-04-29 14:20:14', '2020-04-29 14:20:14', 1, 2, '0000000G', NULL, NULL, NULL, 'default.jpg'),
+(8, 'usernif3', 'usernif3@gmail.com', NULL, '$2y$10$mbQ574UhL7VghPberYdvqeRkXa1ti0qyke87CRAsHgs.qcgxH.W2.', NULL, '2020-04-29 14:22:32', '2020-04-29 14:22:32', 1, 2, '0000000L', NULL, NULL, NULL, 'default.jpg'),
 (9, 'Maria', 'mariafernanda@gmail.com', NULL, '$2y$10$URcR9dmQrebiOtx8IE5U5.RzdUHcLqWZ8cRLVP86RtqZcA2aGoqvq', NULL, '2020-04-29 14:49:07', '2020-04-29 14:49:07', 1, 1, '56659663A', NULL, NULL, NULL, 'default.jpg'),
 (10, 'marga', 'marga@gmail.com', NULL, '$2y$10$Aar3iQGeinmnCOmjGRVfR.fx8N9xoPLkWdjvNvmFx41jjA227Op6G', NULL, '2020-05-12 12:16:04', '2020-05-12 12:16:04', 1, 1, '47744558L', 'marrrra', 'dona', '2020-05-13', 'default.jpg'),
 (11, 'Pere', 'peredirtbike@gmail.com', NULL, '$2y$10$l8uP/dJBUQtRChjz5s/34etJWudWfFcQYTBsYIa5jknpvYlsr.LMO', NULL, '2020-05-12 18:27:25', '2020-05-12 18:27:25', 1, 2, '47747322N', 'Garcia', 'home', '1998-11-03', 'default.jpg'),
 (12, 'xavi', 'xavi@gmail.com', NULL, '$2y$10$rckpOGfLB5sj019OizXbDeOfGHb6w4RQt9U5r.7S179e5/6qNXEvi', NULL, '2020-05-16 15:21:47', '2020-05-16 15:24:25', 33, 1, '65654995G', 'ciscu', 'home', '2016-05-06', 'default.jpg'),
 (13, 'Pepe', 'pepe@gmail.com', NULL, '$2y$10$Dxbof9vfOJyxMOZpQJIUb.LyL6dz3NX7vF.frP3hswzJPitumbkru', NULL, '2020-05-16 15:32:09', '2020-05-16 15:32:09', 1, 1, '46652112F', 'benid', 'home', '2020-05-08', 'default.jpg');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `valoracions`
---
-
-CREATE TABLE `valoracions` (
-  `usuaris_id` int(11) NOT NULL,
-  `restaurants_id` int(11) NOT NULL,
-  `data` date DEFAULT NULL,
-  `comentaris` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `estrelles` int(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Índices para tablas volcadas
@@ -314,6 +335,12 @@ ALTER TABLE `failed_jobs`
 -- Indices de la tabla `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `opinions`
+--
+ALTER TABLE `opinions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -358,14 +385,6 @@ ALTER TABLE `users`
   ADD KEY `fk_usuaris_rol1_idx` (`rol_id`);
 
 --
--- Indices de la tabla `valoracions`
---
-ALTER TABLE `valoracions`
-  ADD PRIMARY KEY (`usuaris_id`,`restaurants_id`),
-  ADD KEY `fk_usuaris_has_restaurants_restaurants1_idx` (`restaurants_id`),
-  ADD KEY `fk_usuaris_has_restaurants_usuaris1_idx` (`usuaris_id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -394,6 +413,12 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `opinions`
+--
+ALTER TABLE `opinions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT de la tabla `paisos`
 --
 ALTER TABLE `paisos`
@@ -403,7 +428,7 @@ ALTER TABLE `paisos`
 -- AUTO_INCREMENT de la tabla `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
