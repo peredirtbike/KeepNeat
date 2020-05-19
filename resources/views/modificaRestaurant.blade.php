@@ -11,7 +11,7 @@
 
     <!-- Example row of columns -->
     <div class="row">
-        <form class="form-horizontal" action="{{ route('updateRestaurant',$restId) }}" role="form" method="POST">
+        <form class="form-horizontal" action="{{ route('updateRestaurant', $restId) }}" role="form" method="POST">
         @csrf
             <div class="col-md-8">
                 <h2>Detalls</h2>

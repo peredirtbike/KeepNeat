@@ -70,7 +70,7 @@ class RestaurantController extends Controller
     {
         $restId = $request->idRest;
 
-        $restaurant = Restaurant::findOrFail($restId);
+        $restaurant = Restaurant::findOrFail($id);
 
         $restaurant->nom = $request -> nNom;
         $nom = $request->nNom;
