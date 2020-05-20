@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form class="form-horizontal" action="{{ route('updateRestaurant',$restId) }}" role="form" method="POST">
+    <form enctype="multipart/form-data" class="form-horizontal" action="{{ route('updateRestaurant',$restId) }}" role="form" method="POST">
         <div class="container">
             <h2 class="display-4 mb-4">{{$nom}}</h2>
 
@@ -69,7 +69,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Horari</label>
-                  <textarea class="form-control" type="text" name="nHorari" id="nHorari" value="{{$horari}}" placeholder="{{$horari}}"></textarea>
+                  <input class="form-control" type="text" name="nHorari" id="nHorari" value="{{$horari}}" placeholder="Introdueix un horari...">
                 </div>
             </div>
 
@@ -86,8 +86,12 @@
             </div>
 
 
-
+                <footer class="text-center">
+                <p>&copy; Keep n' Eat 2020</p>
+              </footer>
         </div>
     </form>
+
+    
 
 @endsection

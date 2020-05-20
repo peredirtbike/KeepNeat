@@ -112,17 +112,16 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animated fadeInDown"><span>Keep n' Eat</span></h2>
-                <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <p class="animated fadeInUp">Keep n' eat dóna la oportunitat de cercar restaurants per tot el país i veure opinions dels usuaris registrats per tal d'escollir adequadament i facilitar al consumidor una experiència única. A més, pots deixar una crítica constructiva per ajudar als següents consumidors per ajudar als propiearis del restaurant.  </p>
                 <div>
-                  <a href="#menu" class="btn-menu animated fadeIn">Our Menu</a>
-                  <a href="#book-a-table" class="btn-book animated fadeIn">Book a Table</a>
+                  <a href="#why-us" class="btn-menu animated fadeIn">Els nostres restaurants</a>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Slide 2 -->
-          <div class="carousel-item" style="background: url(assets/img/slide/slide-2.jpg);">
+          {{-- <div class="carousel-item" style="background: url(assets/img/slide/slide-2.jpg);">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animated fadeInDown">Reserva</h2>
@@ -133,7 +132,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
 
           <!-- Slide 3 -->
           <div class="carousel-item" style="background: url(assets/img/slide/slide-3.jpg);">
@@ -141,10 +140,9 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animated fadeInDown">Donan's la teva opinió</h2>
-                <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <p class="animated fadeInUp">Quina ha estat la teva experiència? Deixa'ns aquí la teva opinió per ajudar a escollir als consumidors i reforçar els aspectes negatius.</p>
                 <div>
-                  <a href="#menu" class="btn-menu animated fadeIn">Our Menu</a>
-                  <a href="#book-a-table" class="btn-book animated fadeIn">Book a Table</a>
+                  <a href="#why-us" class="btn-book animated fadeIn">Els nostres restaurants</a>
                 </div>
               </div>
             </div>
@@ -174,8 +172,11 @@
 
         <div class="row">
 
-          <div class="col-lg-5 align-items-stretch video-box" style='background-image: url("assets/img/about.jpg");'>
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+          <div class="col-lg-5 align-items-stretch container d-flex h-100">
+          <div class="row justify-content-center align-self-center mt-4 ml-4">
+          <img class="rounded-circle mr-5 ml-5" src="{{asset('assets/img/fotos/pere.png')}}" alt="" width="215px" height="215px">
+          <img class="rounded-circle ml-4" src="{{asset('assets/img/fotos/gerard.png')}}" alt="" width="215px" height="215px">
+        </div>
           </div>
 
           <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
@@ -183,21 +184,17 @@
             <div class="content">
               <h3><strong>Qui som?</strong></h3>
               <p>
-                Som 2 estudiants de 2n de DAW (Disseny d'aplicacions web) i venim a presentar el nostre projecte de final de grau.
+                Som 2 estudiants de 2n de DAW (Disseny d'Aplicacions Web) i venim a presentar el nostre projecte de final de grau.
               </p>
               <p class="font-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                Hem decidit dividir l'equip i repartir-nos les tasques.
               </p>
               <ul>
-                <li><i class="bx bx-check-double"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bx bx-check-double"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bx bx-check-double"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                <li><i class="bx bx-check-double"></i> El Gerard Bonastre s'ha encarregat del Back-end.</li>
+                <li><i class="bx bx-check-double"></i> El Pere Garcia s'ha ocupat del Front-end</li>
               </ul>
               <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum
+                Tot i així ambdós ens hem complementat i ajudat en les tasques més difícils. És a dir, el Gerard no només ha fet el Back-end ni el Pere el Front-end en la seva totalitat sinó, ens hem ajudat.
               </p>
             </div>
 
@@ -261,12 +258,12 @@
 
         <div class="section-title">
           <h2><span>Contact</span> Us</h2>
-          <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+          <p>Vols saber més? A continuació us proporcionem les nostres dades perquè us comuniqueu amb nosaltres.</p>
         </div>
       </div>
 
       <div class="map">
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+        <iframe style="border:0; width: 100%; height: 350px;" src="https://maps.google.com/maps?width=100%&amp;height=700&amp;hl=en&amp;coord=41.2311566,1.7285224886456212&amp;q=IES%20Joaquim%20Mir%2C%20school%2C%20Vilanova%20i%20la%20Geltr%C3%BA%2C%20Spain+(Joaquim%20mir)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" allowfullscreen></iframe>
       </div>
 
       <div class="container mt-5">
@@ -335,7 +332,6 @@
   <footer id="footer">
     <div class="container">
       <h3>Keep n' Eat</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
       <div class="social-links">
         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -344,14 +340,7 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
       <div class="copyright">
-        &copy; Copyright <strong><span>Delicious</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        &copy; Copyright <strong><span>Keep n' Eat</span></strong>. All Rights Reserved
       </div>
     </div>
   </footer><!-- End Footer -->

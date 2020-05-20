@@ -179,7 +179,7 @@ class RestaurantController extends Controller
             $restAgregar-> nom = $request -> nomRest;
             $restAgregar-> descripcio = $request -> descRest;
             $restAgregar-> user_id = $request -> idUser;
-            $restAgregar-> estrelles = $request -> estrellesRest;
+            $restAgregar-> tipus_cuina = $request -> tipusCuina;
             $restAgregar-> preu = $request -> preuRest;
             $restAgregar-> adreca = $request -> adrecaRest;
             $restAgregar-> telefon = $request -> telefonRest;

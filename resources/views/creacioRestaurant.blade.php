@@ -2,52 +2,93 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-       
-    <div class="col-md-5">
-        <h3 class="text-center mb-4 mt-2">Crea aquí el teu Restaurant</h3>
+<form enctype="multipart/form-data" class="form-horizontal" action="{{route('agregarRestaurant')}}" role="form" method="POST">
+        <div class="container">
+            <h2 class="display-4 mb-4">Crea aqui el teu restaurant</h2>
 
-        <form enctype="multipart/form-data" action="{{ route('agregarRestaurant') }}" method="post">
-        {{csrf_field()}}
-
-
-            <div class="form-group">
-                <input type="text" class="form-control" id="nomRest" name="nomRest" placeholder="Introdueix el nom">
+            <div class="form-row">
+                <p> <strong> Dades del restaurant:</strong></p>
+              </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputEmail4">Nom del restaurant </label>
+                  <input class="form-control" type="text" name="nomRest" id="nomRest" value="" placeholder="Introdueix un nom per al teu restaurant...">
+                </div>
             </div>
 
-            <div class="form-group">
-                <textarea name="descRest" id="descRest" cols="30" rows="10"></textarea>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Descripció</label>
+                  <textarea class="form-control" type="text" name="descRest" id="descRest" value="" placeholder="Introdueix una descripció per al teu restaurant..."></textarea>
+
+                </div>
             </div>
 
-            <div class="form-group">
-                <input type="text" class="form-control" id="estrellesRest" name="estrellesRest" placeholder="Introdueix nombre d'estrelles">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="inputEmail4">Tipus de cuina</label>
+                  <input class="form-control" type="text" name="tipusCuina" id="tipusCuina" value="" placeholder="Mediterrania, oriental">
+
+                </div>
             </div>
 
-            <div class="form-group">
-                <input type="text" class="form-control" id="preuRest" name="preuRest" placeholder="Introdueix un rang de preus">
+            {{-- <div class="form-row">
+                <div class="form-group col-md-1">
+                  <label for="inputEmail4">Puntuació:</label>
+                  <input class="form-control" type="text" name="nEstrelles" id="nEstrelles" value="{{$estrelles}}" placeholder="{{$estrelles}} estrelles">
+
+                </div>
+            </div> --}}
+
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="inputEmail4">Rang de preus:</label>
+                  <input class="form-control" type="text" name="preuRest" id="preuRest" value="" placeholder="15-30€">
+
+                </div>
             </div>
 
-            <div class="form-group">
-                <input type="text" class="form-control" id="adrecaRest" name="adrecaRest" placeholder="Introdueix la adreça del restaurant">
+            <div class="form-row">
+                <p> <strong>Localització/Contacte:</strong></p>
+
             </div>
 
-            <div class="form-group">
-                <input type="text" class="form-control" id="telefonRest" name="telefonRest" placeholder="Introdueix el telèfon del restaurant">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Adreça</label>
+                  <input class="form-control" type="text" name="adrecaRest" id="adrecaRest" value="" placeholder="Introdueix una adreça...">
+                </div>
             </div>
 
-            <div class="form-group">
-                <input type="text" class="form-control" id="horariRest" name="horariRest" placeholder="Introdueix lhorari del restaurant">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="inputEmail4">Telèfon de contacte</label>
+                  <input class="form-control" type="text" name="telefonRest" id="telefonRest" value="" placeholder="Introdueix un telèfon...">
+                </div>
             </div>
 
-            <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
-            <button class="btn btn-success btn-block" type="submit">Confirmar</button>
-        </form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Horari</label>
+                  <input class="form-control" type="text" name="horariRest" id="horariRest" value="" placeholder="Introdueix un horari...">
+                </div>
+            </div>
 
-        @if(session('agregar'))
-            <div class="alert alert-success mt-3">
-            {{session('agregar')}}</div>
-        @endif
-    </div>
-    </div>
-</div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="submit" class="btn btn-primary mr-2" value="Guardar">
+                  <a style="color: black" href="{{route('home')}}">Cancel</a>
+
+                  <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  
+                </div>
+            </div>
+
+
+                <footer class="text-center">
+                <p>&copy; Keep n' Eat 2020</p>
+              </footer>
+        </div>
+    </form>
 @endsection 
