@@ -102,7 +102,7 @@ class RestaurantController extends Controller
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-        return view('mostra_restaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
+        return view('modificaRestaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
     }
 
     public function mostrar_restaurante($id)
