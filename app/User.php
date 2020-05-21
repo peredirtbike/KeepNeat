@@ -42,9 +42,13 @@ class User extends Authenticatable
         return $this->hasOne(Restaurant::class);
     }
 
-
     public function Direccions()
     {
         return $this->belongsTo(Direccio::class);
+    }
+
+    public function Telefon()
+    {
+        return $this->hasMany(Telefon::class);
     }
 }

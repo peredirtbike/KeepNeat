@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use \App\Restaurant;
@@ -68,41 +69,30 @@ class RestaurantController extends Controller
 
     public function updateRestaurant($id, Request $request)
     {
-        $restId = $request->idRest;
-
         $restaurant = Restaurant::findOrFail($id);
-
-        $idPropi = $restaurant->user_id;
-
         $restaurant->nom = $request -> nNom;
-        $nom = $request->nNom;
-
         $restaurant->descripcio = $request -> nDescripcio;
-        $descripcio = $request->nDescripcio;
-
-        $restaurant->estrelles = $request -> nEstrelles;
-        $estrelles = $request->nEstrelles;
-
         $restaurant->preu = $request -> nPreu;
-        $preu = $request->nPreu;
-
         $restaurant->tipus_cuina = $request -> nTipus;
-        $tipus_cuina = $request->nTipus;
-
         $restaurant->adreca = $request -> nAdreca;
-        $adreca = $request->nAdreca;
-
         $restaurant->telefon = $request -> nTelefon;
-        $telefon = $request->nTelefon;
-
         $restaurant->horari = $request -> nHorari;
-        $horari = $request->nHorari;
-
         $restaurant->save();
+
+        $restId = $restaurant->id;
+        $nom = $restaurant->nom;
+        $descripcio = $restaurant->descripcio;
+        $estrelles = $restaurant->estrelles;
+        $preu = $restaurant->preu;
+        $tipus_cuina = $restaurant->tipus_cuina;
+        $adreca = $restaurant->adreca;
+        $telefon = $restaurant->telefon;
+        $horari = $restaurant->horari;
+        $idPropi = $restaurant->user_id;
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-        return view('modificaRestaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
+        return view('mostra_restaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
     }
 
     public function mostrar_restaurante($id)
@@ -155,8 +145,6 @@ class RestaurantController extends Controller
 
         return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
     }
-
-
 
     // ------------------------------------------------ CREA REST ------------------------------------------------
 
