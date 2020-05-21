@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 19-05-2020 a las 11:51:44
+-- Tiempo de generación: 21-05-2020 a las 15:15:33
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -98,7 +98,8 @@ INSERT INTO `direccions` (`id`, `carrer`, `numero`, `pis`, `ciutats_id`) VALUES
 (30, 'DEFAULT', '0', '0', 1),
 (31, 'DEFAULT', '0', '0', 1),
 (32, 'DEFAULT', '0', '0', 1),
-(33, 'DEFAULT', '0', '0', 9);
+(33, 'DEFAULT', '0', '0', 9),
+(34, 'Capuchon', '69', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -166,7 +167,10 @@ INSERT INTO `opinions` (`id`, `usuari_id`, `restaurant_id`, `comentari`, `puntua
 (8, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:42:34'),
 (9, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:42:47'),
 (10, 1, 16, 'gadscgafdcv', 51, '2020-05-18 14:43:49'),
-(11, 1, 16, 'fdsafasfsaas', 2, '2020-05-18 14:43:54');
+(11, 1, 16, 'fdsafasfsaas', 2, '2020-05-18 14:43:54'),
+(12, 1, 16, 'fdsfsd', 99, '2020-05-19 12:59:32'),
+(13, 1, 11, 'dasda', 32, '2020-05-20 12:49:12'),
+(14, 1, 11, 'fasfdsafasdf', 12, '2020-05-21 12:55:54');
 
 -- --------------------------------------------------------
 
@@ -238,13 +242,14 @@ CREATE TABLE `restaurants` (
 --
 
 INSERT INTO `restaurants` (`id`, `nom`, `descripcio`, `estrelles`, `preu`, `tipus_cuina`, `adreca`, `telefon`, `horari`, `user_id`) VALUES
-(11, 'El asador argentino xino tambien', 'Asador dedicat al menjar argentí', 100, '100', 'medioxina', 'tarantino', 699696332, 'Dilluns-Diumenge', 1),
+(11, 'El asador argentino xino tambien', 'dsadasdfafas222222222222222', NULL, '600', 'medioxina', 'tarantino', 699696332, 'Dilluns-Diumenge', 1),
 (13, 'Tai kwai chi', 'Komila xina para yeba a tu casita', 0, '0', '', '', 0, '', 4),
 (14, 'Zagreb armani', 'Ki pasa amego quiere comida buina?', 0, '0', '', '', 0, '', 7),
 (16, 'El racó de\'n pere', 'ajajajajaj', 0, '0', '', '', 0, '', 10),
 (17, 'La pipa de la pau', 'Fuma\'t els porrilos a gust', 0, '0', '', '', 0, '', 11),
 (18, 'daddaads', 'ghvuvcgjuvb', 60, '100', NULL, 'hcvfvgb jn', 699665582, 'Dilluns - Diumenge', 8),
-(19, 'Papanatas', 'patatas fritas', 50, '10-58', NULL, 'Avenida callefria', 644145232, 'Dilluns - Diumenge', 6);
+(19, 'Papanatas', 'patatas fritas', 50, '10-58', NULL, 'Avenida callefria', 644145232, 'Dilluns - Diumenge', 6),
+(20, 'ChinCHAN', 'comia xina', NULL, '15-30€', 'MediteOriental', 'Avenida callefria', 699699699, 'Dilluns - Diumenge', 3);
 
 -- --------------------------------------------------------
 
@@ -265,6 +270,28 @@ INSERT INTO `rol` (`id`, `nom`) VALUES
 (0, 'super'),
 (1, 'basic'),
 (2, 'empresari');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `telefons`
+--
+
+CREATE TABLE `telefons` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `numero` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `telefons`
+--
+
+INSERT INTO `telefons` (`id`, `user_id`, `numero`) VALUES
+(1, 1, 677357103),
+(2, 1, 656669996),
+(3, 3, 622141553),
+(4, 12, 333666222);
 
 -- --------------------------------------------------------
 
@@ -295,9 +322,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `direccions_id`, `rol_id`, `nif`, `cognoms`, `sexe`, `data_naixement`, `avatar`) VALUES
-(1, 'Gerard', 'gerard@gmail.com', NULL, '$2y$10$OkHzOLAHV0ElWUaSEOuiiubL7w.Mvlfn92pihTWjiPqyVkCh0Iesm', NULL, '2020-04-28 12:40:02', '2020-05-11 14:24:05', 28, 0, '88888856O', 'Bonastre Sivill', NULL, '2063-12-23', '1589214245.png'),
+(1, 'Gerard', 'gerard@gmail.com', NULL, '$2y$10$OkHzOLAHV0ElWUaSEOuiiubL7w.Mvlfn92pihTWjiPqyVkCh0Iesm', NULL, '2020-04-28 12:40:02', '2020-05-19 12:55:42', 34, 0, '88888856O', 'Bonastre Sivill', NULL, '2063-12-23', '1589900140.jpg'),
 (2, 'Pere', 'pere@gmail.com', NULL, '$2y$10$NAq64.8qgXl3m5aaQDl5AOFY8zz2f9FSsL6zvE2f/hNvo2Bufajtu', NULL, '2020-04-29 13:23:04', '2020-04-29 13:23:04', 3, 1, '21312', NULL, NULL, NULL, 'default.jpg'),
-(3, 'Basic', 'basic@gmail.com', NULL, '$2y$10$7EC1zAEKapvTbZSz/5RvHebTbQ8nwIj/HSh3noZraoFncqwdNnVh6', NULL, '2020-04-29 13:28:37', '2020-04-29 13:28:37', 1, 1, '321231', NULL, NULL, NULL, 'default.jpg'),
+(3, 'Basic', 'basic@gmail.com', NULL, '$2y$10$7EC1zAEKapvTbZSz/5RvHebTbQ8nwIj/HSh3noZraoFncqwdNnVh6', NULL, '2020-04-29 13:28:37', '2020-04-29 13:28:37', 2, 2, '321231', NULL, NULL, NULL, 'default.jpg'),
 (5, 'UsuarioBasicoNIF', 'usbasnif@gmail.com', NULL, '$2y$10$nRwuiUzciAbwAIfh8cdeDOHOcD8EnS7SQUdvAH/ehyQCn0/VgITja', NULL, '2020-04-29 14:18:12', '2020-04-29 14:18:12', 1, 1, NULL, NULL, NULL, NULL, 'default.jpg'),
 (6, 'usernif2', 'usernif2@gmail.com', NULL, '$2y$10$IuDN9EGf85A97bQV4Y8YVOu5FAtF08CKpuLaQfd49/f4hO8eWhs1C', NULL, '2020-04-29 14:20:14', '2020-04-29 14:20:14', 1, 2, '0000000G', NULL, NULL, NULL, 'default.jpg'),
 (8, 'usernif3', 'usernif3@gmail.com', NULL, '$2y$10$mbQ574UhL7VghPberYdvqeRkXa1ti0qyke87CRAsHgs.qcgxH.W2.', NULL, '2020-04-29 14:22:32', '2020-04-29 14:22:32', 1, 2, '0000000L', NULL, NULL, NULL, 'default.jpg'),
@@ -376,6 +403,12 @@ ALTER TABLE `rol`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `telefons`
+--
+ALTER TABLE `telefons`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -398,7 +431,7 @@ ALTER TABLE `ciutats`
 -- AUTO_INCREMENT de la tabla `direccions`
 --
 ALTER TABLE `direccions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -416,7 +449,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `opinions`
 --
 ALTER TABLE `opinions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `paisos`
@@ -428,7 +461,13 @@ ALTER TABLE `paisos`
 -- AUTO_INCREMENT de la tabla `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de la tabla `telefons`
+--
+ALTER TABLE `telefons`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
