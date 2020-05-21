@@ -72,6 +72,8 @@ class RestaurantController extends Controller
 
         $restaurant = Restaurant::findOrFail($id);
 
+        $idPropi = $restaurant->user_id;
+
         $restaurant->nom = $request -> nNom;
         $nom = $request->nNom;
 
@@ -98,10 +100,9 @@ class RestaurantController extends Controller
 
         $restaurant->save();
 
-        $idPropi = $restaurant->user_id;
+        $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-
-        return view('mostra_restaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari'));
+        return view('modificaRestaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
     }
 
     public function mostrar_restaurante($id)
@@ -119,8 +120,6 @@ class RestaurantController extends Controller
         $idPropi = $restaurant->user_id;
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
-
-
 
         return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
     }
