@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 21-05-2020 a las 15:15:33
+-- Tiempo de generación: 23-05-2020 a las 16:22:20
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -99,7 +99,9 @@ INSERT INTO `direccions` (`id`, `carrer`, `numero`, `pis`, `ciutats_id`) VALUES
 (31, 'DEFAULT', '0', '0', 1),
 (32, 'DEFAULT', '0', '0', 1),
 (33, 'DEFAULT', '0', '0', 9),
-(34, 'Capuchon', '69', '1', 1);
+(34, 'Capuchon', '69', '1', 1),
+(35, 'Capuchon', '69', '1', 1),
+(36, 'Capuchon', '69', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -166,11 +168,15 @@ INSERT INTO `opinions` (`id`, `usuari_id`, `restaurant_id`, `comentari`, `puntua
 (7, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:39:19'),
 (8, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:42:34'),
 (9, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:42:47'),
-(10, 1, 16, 'gadscgafdcv', 51, '2020-05-18 14:43:49'),
+(10, 1, 11, 'gadscgafdcv', 51, '2020-05-18 14:43:49'),
 (11, 1, 16, 'fdsafasfsaas', 2, '2020-05-18 14:43:54'),
 (12, 1, 16, 'fdsfsd', 99, '2020-05-19 12:59:32'),
-(13, 1, 11, 'dasda', 32, '2020-05-20 12:49:12'),
-(14, 1, 11, 'fasfdsafasdf', 12, '2020-05-21 12:55:54');
+(13, 2, 11, 'dasda', 32, '2020-05-20 12:49:12'),
+(14, 1, 11, 'fasfdsafasdf', 12, '2020-05-21 12:55:54'),
+(15, 3, 17, 'feo', 1, '2020-05-21 13:17:50'),
+(16, 1, 13, 'Amazing bro', 9, '2020-05-23 13:48:21'),
+(17, 1, 13, 'Amazing bro', 9, '2020-05-23 13:48:59'),
+(18, 1, 13, 'Amazing bro', 9, '2020-05-23 13:51:00');
 
 -- --------------------------------------------------------
 
@@ -291,7 +297,16 @@ INSERT INTO `telefons` (`id`, `user_id`, `numero`) VALUES
 (1, 1, 677357103),
 (2, 1, 656669996),
 (3, 3, 622141553),
-(4, 12, 333666222);
+(4, 12, 333666222),
+(5, 1, 677564782),
+(6, 1, 677564782),
+(7, 1, 677564782),
+(8, 1, 999999999),
+(9, 1, 938186669),
+(10, 1, 938186669),
+(11, 1, 938186669),
+(12, 1, 938186669),
+(13, 1, 111111111);
 
 -- --------------------------------------------------------
 
@@ -322,9 +337,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `direccions_id`, `rol_id`, `nif`, `cognoms`, `sexe`, `data_naixement`, `avatar`) VALUES
-(1, 'Gerard', 'gerard@gmail.com', NULL, '$2y$10$OkHzOLAHV0ElWUaSEOuiiubL7w.Mvlfn92pihTWjiPqyVkCh0Iesm', NULL, '2020-04-28 12:40:02', '2020-05-19 12:55:42', 34, 0, '88888856O', 'Bonastre Sivill', NULL, '2063-12-23', '1589900140.jpg'),
+(1, 'Gerard', 'gerard@gmail.com', NULL, '$2y$10$OkHzOLAHV0ElWUaSEOuiiubL7w.Mvlfn92pihTWjiPqyVkCh0Iesm', NULL, '2020-04-28 12:40:02', '2020-05-23 14:18:12', 36, 0, '88888856O', 'Bonastre Sivill', NULL, '2063-12-23', '1589900140.jpg'),
 (2, 'Pere', 'pere@gmail.com', NULL, '$2y$10$NAq64.8qgXl3m5aaQDl5AOFY8zz2f9FSsL6zvE2f/hNvo2Bufajtu', NULL, '2020-04-29 13:23:04', '2020-04-29 13:23:04', 3, 1, '21312', NULL, NULL, NULL, 'default.jpg'),
-(3, 'Basic', 'basic@gmail.com', NULL, '$2y$10$7EC1zAEKapvTbZSz/5RvHebTbQ8nwIj/HSh3noZraoFncqwdNnVh6', NULL, '2020-04-29 13:28:37', '2020-04-29 13:28:37', 2, 2, '321231', NULL, NULL, NULL, 'default.jpg'),
 (5, 'UsuarioBasicoNIF', 'usbasnif@gmail.com', NULL, '$2y$10$nRwuiUzciAbwAIfh8cdeDOHOcD8EnS7SQUdvAH/ehyQCn0/VgITja', NULL, '2020-04-29 14:18:12', '2020-04-29 14:18:12', 1, 1, NULL, NULL, NULL, NULL, 'default.jpg'),
 (6, 'usernif2', 'usernif2@gmail.com', NULL, '$2y$10$IuDN9EGf85A97bQV4Y8YVOu5FAtF08CKpuLaQfd49/f4hO8eWhs1C', NULL, '2020-04-29 14:20:14', '2020-04-29 14:20:14', 1, 2, '0000000G', NULL, NULL, NULL, 'default.jpg'),
 (8, 'usernif3', 'usernif3@gmail.com', NULL, '$2y$10$mbQ574UhL7VghPberYdvqeRkXa1ti0qyke87CRAsHgs.qcgxH.W2.', NULL, '2020-04-29 14:22:32', '2020-04-29 14:22:32', 1, 2, '0000000L', NULL, NULL, NULL, 'default.jpg'),
@@ -431,7 +445,7 @@ ALTER TABLE `ciutats`
 -- AUTO_INCREMENT de la tabla `direccions`
 --
 ALTER TABLE `direccions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -449,7 +463,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `opinions`
 --
 ALTER TABLE `opinions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `paisos`
@@ -467,13 +481,13 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT de la tabla `telefons`
 --
 ALTER TABLE `telefons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

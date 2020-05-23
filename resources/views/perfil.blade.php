@@ -124,6 +124,19 @@
                 <span></span>
                 
               </form>
+
+              <form method="POST" action="{{ route('addTelf') }}">
+              @csrf
+
+                <input type="number" name="nTelefon" id="nTelefon">
+                <input type="submit" value="Agregar Telf">
+                <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
+              </form>
+              @foreach ($telefons as $telefon)
+                {{ $telefon->numero }} <br>
+              @endforeach
+
+
               <form method="POST" action="{{ route('delete_user') }}">
                 @csrf
                 <div class="form-row">

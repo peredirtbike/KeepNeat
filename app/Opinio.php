@@ -11,4 +11,8 @@ class Opinio extends Model
 
     protected $table = 'opinions';
 
+    protected $fillable = [
+        'usuari_id', 'restaurant_id', 'comentari', 'puntuacio'
+    ];
+
 }

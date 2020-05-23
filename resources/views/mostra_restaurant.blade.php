@@ -37,7 +37,6 @@
       </div>
     </div>
 
-
     <div class="mb-5">
     <div class="form-row">
       <div class="form-group col-md-2">
@@ -62,26 +61,32 @@
   @endif
 
   @foreach ($opinions as $opinio)
-  <div class="col-md-12">
-    <div>
-      {{$opinio->puntuacio}}
-    </div>
-  <div class="media">
-    <p class="float-right" style="float: right;"><small>{{$opinio->data}}</small></p>
-     <a class="media-left" href="#">
-       <img src="http://lorempixel.com/40/40/people/1/">
-     </a>
-     <div class="media-body">
-         
-     <h4 class="media-heading user_name">{{$opinio->usuari_id}}</h4>
-       {{$opinio->comentari}}
-            </div>
-   </div>
-   <hr class="style1">
+    @foreach ($usuaris as $usuari)
+      @if ($opinio->usuari_id == $usuari->id)
 
-  </div>
+    <div class="col-md-12">
+      <div>
+        {{$opinio->puntuacio}}
+        
+      </div>
+    <div class="media">
+      <p class="float-right" style="float: right;"><small>{{$opinio->data}}</small></p>
+      <a class="media-left" href="#">
+        <img src="/uploads/avatars/{{ $usuari->avatar }}" style="width:32px; height:32px; position:absolute; top:5px; border-radius:50%">
+      </a>
+      <div class="media-body">
+          <h4 class="media-heading user_name">{{$usuari->name}}</h4>
+            {{$opinio->comentari}}
+                  </div>
+    </div>
+    <hr class="style1">
+
+    </div>
+    @endif
 
   @endforeach
+
+@endforeach
 
      
 

@@ -15,7 +15,8 @@ class UserController extends Controller
 {
     //
   
-    public function perfil(){
+    public function perfil()
+    {
         // PAISOS
         $paisos = Pais::all();
         $data['paisos'] = $paisos;
@@ -28,10 +29,15 @@ class UserController extends Controller
         $direccions = Direccio::all(); 
         $data['direccions'] = $direccions;
 
-        return view('perfil', array('user'=>Auth::user()), $data );
+        // TELEFONS
+        $telefons = \App\Telefon::all()->where('user_id', Auth::user()->id);
+        $data['telefons'] = $telefons;
+
+        return view('perfil', array('user'=>Auth::user()), $data);
     }
 
-    public function update_avatar(Request $request){
+    public function update_avatar(Request $request)
+    {
         
         // NOM, COGNOM, DATA_NAIXEMENT, NIF
         $idUsuari = $request -> idUser;
@@ -54,7 +60,9 @@ class UserController extends Controller
     		$user->avatar = $filename;
     		$user->save();
         }
-
+        // TELEFONS
+        $telefons = \App\Telefon::all()->where('user_id', Auth::user()->id);
+        $data['telefons'] = $telefons;
         
         // PAISOS
         $paisos = Pais::all();
@@ -88,12 +96,42 @@ class UserController extends Controller
     {
         $idUsuari = $request -> idUser;
         $usuari = \App\User::find($idUsuari);
-
-
         $usuari->delete();
-        // $user->delete();
+
         Auth::logout();
 
-        return view('welcome');
+        $restaurants = \App\Restaurant::paginate(6);
+        $data["restaurants"] = $restaurants;
+
+        return view('welcome', $data);
+
+    }
+
+    public function addTelf(Request $request)
+    {
+        
+        $userTelf = new \App\Telefon;
+        $userTelf->user_id = $request->idUser;
+        $userTelf->numero = $request->nTelefon;
+        $userTelf->save();
+
+        // TELEFONS
+        $telefons = \App\Telefon::all()->where('user_id', $request->idUser);
+        $data['telefons'] = $telefons;
+
+         // PAISOS
+         $paisos = Pais::all();
+         $data['paisos'] = $paisos;
+ 
+         // CIUTATS
+         $ciutats = Ciutat::all();
+         $data['ciutats'] = $ciutats;
+ 
+         // DIRECCIO
+         $direccions = Direccio::all(); 
+         $data['direccions'] = $direccions;
+ 
+         return view('perfil', array('user'=>Auth::user()), $data);
+
     }
 }

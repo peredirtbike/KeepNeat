@@ -111,7 +111,13 @@ class RestaurantController extends Controller
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
+        // $sqlQuery = "SELECT usuari_id FROM opinions WHERE restaurant_id = ".$restId.";";
+        // $opinionsComenter = DB::select(DB::raw($sqlQuery));
+        $usuaris = \App\User::all();
+
+
+
+        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris'));
     }
 
     // ------------------------------------------------ OPINIO ---------------------------------------------------
@@ -143,7 +149,9 @@ class RestaurantController extends Controller
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
+        $usuaris = \App\User::all();
+
+        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris'));
     }
 
     // ------------------------------------------------ CREA REST ------------------------------------------------
