@@ -12,7 +12,7 @@
     <!-- Example row of columns -->
     <div class="row">
         
-        <div class="col-md-8">
+        <div class="col-md-6 shadow p-3 mb-5 bg-white rounded">
             <h2>Detalls</h2>
             <p><strong>DESCRIPCIÓ: </strong>{{$descripcio}}</p>
             <p><strong>PUNTUACIÓ: </strong>{{$estrelles}} estrelles</p>
@@ -20,30 +20,70 @@
             <p><strong>TIPUS DE CUINA: </strong>{{$tipus_cuina}}</p>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6 shadow p-3 mb-5 bg-white rounded">
             <h2>Ubicació i contacte</h2>
             <p><strong>ADREÇA:</strong> {{$adreca}}</p>
             <p><strong>TELEFON:</strong> {{$telefon}}</p>
             <p><strong>HORARI:</strong> {{$horari}}</p>
         </div>
+    </div>
 
-        @if(Auth::user())
-          @if(Auth::user()->id == $idPropi)
-            <a class="dropdown-item" id="{{$idPropi}}" href="{{ route('modificaRestaurant',$restId) }}">Modificar</a>
-          @endif
-            <form action="{{ route('opinioSend',$restId) }}" method="post">
-            @csrf
+   <div class="row mb-5">
+    <div class="col-md-8">
+    @if(Auth::user())
+    @if(Auth::user()->id == $idPropi)
+      <a id="{{$idPropi}}" href="{{ route('modificaRestaurant',$restId) }}">Modificar Restaurant</a>
+    @endif
+      </div>
+    </div>
 
-              Puntuacio: <input type="number" name="puntuacio" id="puntuacio" min="1" max="100">
-              <br><br>
-              Opinio: <br> <textarea name="opinio" id="opinio" cols="30" rows="10"></textarea>
-              <input type="submit" value="Enviar">
-              <input type="hidden" name="idRest" id="idRest" value="{{$restId}}">
 
-            </form>
-        @endif
+    <div class="mb-5">
+    <div class="form-row">
+      <div class="form-group col-md-2">
+      <form action="{{ route('opinioSend',$restId) }}" method="post">
+      @csrf
+        <label>Puntuació</label>
+        <input class="form-control" type="number" name="puntuacio" id="puntuacio" min="1" max="100">
+      </div>
+    </div>
 
-        <p><strong>OPINIONS:</strong><br> {{$opinions}}</p>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Opinió</label>
+        <textarea class="form-control" name="opinio" id="opinio" cols="20" rows="2"></textarea>
+      </div>
+    </div>
+    <input type="submit" class="btn btn-primary mr-2" value="Enviar Comentari">
+    <input type="hidden" name="idRest" id="idRest" value="{{$restId}}">
+    
+      </form>
+    </div>
+  @endif
+
+  @foreach ($opinions as $opinio)
+  <div class="col-md-12">
+    <div>
+      {{$opinio->puntuacio}}
+    </div>
+  <div class="media">
+    <p class="float-right" style="float: right;"><small>{{$opinio->data}}</small></p>
+     <a class="media-left" href="#">
+       <img src="http://lorempixel.com/40/40/people/1/">
+     </a>
+     <div class="media-body">
+         
+     <h4 class="media-heading user_name">{{$opinio->usuari_id}}</h4>
+       {{$opinio->comentari}}
+            </div>
+   </div>
+   <hr class="style1">
+
+  </div>
+
+  @endforeach
+
+     
 
 
       
@@ -56,7 +96,7 @@
 
     <hr>
 
-    <footer>
+    <footer class="text-center">
       <p>&copy; Keep n' Eat 2020</p>
     </footer>
   </div> <!-- /container -->
