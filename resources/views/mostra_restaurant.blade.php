@@ -60,49 +60,44 @@
     </div>
   @endif
 
+  <div class="row">
+    <div class="col-md-12 mb-2">
+      <h2>Opinions i Puntuacions</h2>
+    </div>
+  </div>
   @foreach ($opinions as $opinio)
     @foreach ($usuaris as $usuari)
       @if ($opinio->usuari_id == $usuari->id)
 
-    <div class="col-md-12">
+    <div class="col-md-12 shadow p-3 mb-1 bg-white rounded" style="background-color: #8c8b8b"; >
       <div>
         {{$opinio->puntuacio}}
-        
+        <p class="d-flex justify-content-end"><small class="float-right">{{$opinio->data}}</small></p>
+
       </div>
     <div class="media">
-      <p class="float-right" style="float: right;"><small>{{$opinio->data}}</small></p>
       <a class="media-left" href="#">
-        <img src="/uploads/avatars/{{ $usuari->avatar }}" style="width:32px; height:32px; position:absolute; top:5px; border-radius:50%">
+        <img class="rounded-circle mr-4" src="/uploads/avatars/{{ $usuari->avatar }}" height="50" width="50">
       </a>
       <div class="media-body">
-          <h4 class="media-heading user_name">{{$usuari->name}}</h4>
+          <h4 class="media-heading user_name">{{$usuari->name." ".$usuari->cognoms}}</h4>
             {{$opinio->comentari}}
-                  </div>
+      </div>
     </div>
-    <hr class="style1">
 
     </div>
     @endif
 
   @endforeach
-
 @endforeach
 
-     
-
-
-      
-
-
-
-
-
-    </div>
-
-    <hr>
-
-    <footer class="text-center">
-      <p>&copy; Keep n' Eat 2020</p>
-    </footer>
+<div class="mb-5"></div>
+    
+<footer class="text-center">
+  <p>&copy; Keep n' Eat 2020</p>
+</footer>
+ 
   </div> <!-- /container -->
+
+  
 @endsection
