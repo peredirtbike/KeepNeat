@@ -22,11 +22,6 @@
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info ">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
-          <i class="fa fa-coffee"></i>
-          This is an <strong>.alert</strong>. Use this to show important messages to the user.
-        </div>
         <h3>Personal info</h3>
         <div class="form-row">
           <p> <strong> Dades Personals:</strong></p>
@@ -55,9 +50,7 @@
             </div>
           </div> 
 
-              <div class="form-row">
-                <p><strong>Adreça domicili:</strong></p>
-              </div>
+             
 
               <div class="form-row">
                 <div class="form-group col-md-4">
@@ -106,7 +99,16 @@
                   </div>
                 </div>    
               </div>
-              
+              <div class="form-row">
+                <p><strong>Telèfons:</strong></p>
+              </div>
+              <div class="form-row mb-5 ">
+                <div class="form-group col-md-6">
+              @foreach ($telefons as $telefon)
+              {{ $telefon->numero }} <br>
+              @endforeach
+                </div>
+              </div>
 
               <div class="form-row">
                 <div class="form-group col-md-6">
@@ -125,16 +127,15 @@
                 
               </form>
 
-              <form method="POST" action="{{ route('addTelf') }}">
-              @csrf
-
-                <input type="number" name="nTelefon" id="nTelefon">
-                <input type="submit" value="Agregar Telf">
-                <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
+              <form class="row col-md-2 mr-2" method="POST" action="{{ route('addTelf') }}">
+                @csrf
+  
+                  <input class="form-control" type="number" name="nTelefon" id="nTelefon">
+                  <input class="form-control" type="submit" value="Agregar Telf">
+                  <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
               </form>
-              @foreach ($telefons as $telefon)
-                {{ $telefon->numero }} <br>
-              @endforeach
+            
+             
 
 
               <form method="POST" action="{{ route('delete_user') }}">

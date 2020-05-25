@@ -224,7 +224,7 @@
             <input name="invisible" type="hidden" value="{{$restaurant->id}}">
               <span>{{$restaurant->nom}}</span>
               <h4>{{$restaurant->descripcio}}</h4>
-              <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+            <p>{{\App\Opinio::where('restaurant_id',$restaurant->id)->pluck('puntuacio')->avg()}}⭐</p>
             </div>
           </a>
           </div>

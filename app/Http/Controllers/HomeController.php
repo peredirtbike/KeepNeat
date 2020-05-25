@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Restaurant;
 use Auth;
+use \App\Opinio;
+
 
 
 class HomeController extends Controller

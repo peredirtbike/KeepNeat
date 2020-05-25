@@ -6,16 +6,18 @@
       <p></p>
     </div>
   </div>
-
   <div class="container">
-
+    <div class="row">
+      <div class="col-md-12 shadow p-3 mb-5 bg-white rounded">
+ 
+      </div>
+    </div>
     <!-- Example row of columns -->
     <div class="row">
-        
         <div class="col-md-6 shadow p-3 mb-5 bg-white rounded">
             <h2>Detalls</h2>
             <p><strong>DESCRIPCIÓ: </strong>{{$descripcio}}</p>
-            <p><strong>PUNTUACIÓ: </strong>{{$estrelles}} estrelles</p>
+            <p><strong>PUNTUACIÓ MITJA: </strong>{{\App\Opinio::where('restaurant_id',$restId)->pluck('puntuacio')->avg()}}⭐</p>
             <p><strong>RANG DE PREUS: </strong>{{$preu}} €</p>
             <p><strong>TIPUS DE CUINA: </strong>{{$tipus_cuina}}</p>
         </div>
@@ -43,7 +45,7 @@
       <form action="{{ route('opinioSend',$restId) }}" method="post">
       @csrf
         <label>Puntuació</label>
-        <input class="form-control" type="number" name="puntuacio" id="puntuacio" min="1" max="100">
+        <input class="form-control" type="number" name="puntuacio" id="puntuacio" min="1" max="5">
       </div>
     </div>
 

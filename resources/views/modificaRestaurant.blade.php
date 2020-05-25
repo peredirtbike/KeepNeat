@@ -4,7 +4,7 @@
     <form enctype="multipart/form-data" class="form-horizontal" action="{{ route('updateRestaurant',$restId) }}" role="form" method="POST">
         <div class="container">
             <h2 class="display-4 mb-4">{{$nom}}</h2>
-
+          
             <div class="form-row">
                 <p> <strong> Dades del restaurant:</strong></p>
               </div>

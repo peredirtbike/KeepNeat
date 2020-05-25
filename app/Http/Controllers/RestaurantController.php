@@ -63,7 +63,16 @@ class RestaurantController extends Controller
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-        return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
+        if (Auth::user()->id == $idPropi)
+        {
+            return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
+        }
+
+        else 
+        {
+            return view('mostra_restaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
+        }
+
    
     }
 
@@ -117,7 +126,7 @@ class RestaurantController extends Controller
 
 
 
-        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris'));
+        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris','ruta'));
     }
 
     // ------------------------------------------------ OPINIO ---------------------------------------------------
@@ -185,7 +194,7 @@ class RestaurantController extends Controller
 
         }
         else{
-            dd($propietari);
+            return view('welcome');
         }
         // $restaurants = \App\Restaurant::all();
         // $data["restaurants"] = $restaurants;
@@ -225,7 +234,6 @@ class RestaurantController extends Controller
 
     function upload(Request $request)
     {
-
         $usuariFolder = $request -> idRest;
 
         $image = $request->file('file');
@@ -245,6 +253,7 @@ class RestaurantController extends Controller
         $output = '<div class="row">';
         foreach($images as $image)
         {
+
         $output .= '
         <div class="col-md-2" style="margin-bottom:16px;" align="center">
                     <img src="'.asset('uploads/restaurant/'.$idRestaurant.'/' . $image->getFilename()).'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
@@ -264,6 +273,9 @@ class RestaurantController extends Controller
       \File::delete(public_path('uploads/restaurant/'.$idRestaurant. '/' . $request->get('name')));
      }
     }
+
+
+
 }
 ?>
 
