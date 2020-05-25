@@ -64,9 +64,9 @@ class RestaurantController extends Controller
         $idPropi = $restaurant->user_id;
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
-
+        $imatges = Imatge::all()->where('restaurant_id', $restId);
        
-        return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari'));
+        return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari', 'imatges'));
         
     }
 
@@ -97,7 +97,11 @@ class RestaurantController extends Controller
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-        return view('mostra_restaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari'));
+        $imatges = Imatge::all()->where('restaurant_id', $restId);
+
+        $usuaris = \App\User::all();
+
+        return view('mostra_restaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari', 'usuaris', 'imatges'));
     }
 
     public function mostrar_restaurante($id)
@@ -157,7 +161,10 @@ class RestaurantController extends Controller
 
         $usuaris = \App\User::all();
 
-        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris', 'propietari'));
+        $imatges = Imatge::all()->where('restaurant_id', $restId);
+
+
+        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris', 'imatges', 'propietari'));
     }
 
     // ------------------------------------------------ CREA REST ------------------------------------------------
@@ -173,6 +180,9 @@ class RestaurantController extends Controller
         $propRest = $request->idUser;
 
         $propietari = \App\Restaurant::all()->where('user_id', "=", $propRest);
+
+        $usuaris = \App\User::all();
+
 
         if ($propietari->isEmpty())
         {
@@ -207,7 +217,10 @@ class RestaurantController extends Controller
 
             $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-            return view('mostra_restaurant', compact('idPropi','restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari'));
+            $imatges = Imatge::all()->where('restaurant_id', $restId);
+
+
+            return view('mostra_restaurant', compact('idPropi','restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris', 'imatges', 'propietari'));
 
         }
         else

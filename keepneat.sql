@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.4
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 25-05-2020 a las 19:08:19
+-- Tiempo de generación: 25-05-2020 a las 21:45:16
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -206,7 +206,10 @@ INSERT INTO `opinions` (`id`, `usuari_id`, `restaurant_id`, `comentari`, `puntua
 (19, 11, 11, 'fdsfdsf', 5, '2020-05-24 18:03:54'),
 (20, 1, 14, 'Amazing', 5, '2020-05-25 11:38:43'),
 (21, 1, 14, 'Esta bien', 1, '2020-05-25 11:38:51'),
-(22, 1, 14, 'Esta bien', 1, '2020-05-25 11:40:57');
+(22, 1, 14, 'Esta bien', 1, '2020-05-25 11:40:57'),
+(23, 1, 11, 'Magnifico', 3, '2020-05-25 19:42:27'),
+(24, 1, 20, 'fgdsf', 5, '2020-05-25 19:43:51'),
+(25, 1, 20, 'fgdsf', 5, '2020-05-25 19:45:00');
 
 -- --------------------------------------------------------
 
@@ -278,7 +281,7 @@ CREATE TABLE `restaurants` (
 --
 
 INSERT INTO `restaurants` (`id`, `nom`, `descripcio`, `estrelles`, `preu`, `tipus_cuina`, `adreca`, `telefon`, `horari`, `user_id`) VALUES
-(11, 'El asador argentino xino tambien', 'dsadasdfafas222222222222222', NULL, '600', 'medioxina', 'tarantino', 699696332, 'Dilluns-Diumenge', 1),
+(11, 'El asador argentino chino tambenne', 'italochinao', NULL, '200-900€', 'medioxina', 'tarantino', 699696332, 'Dilluns-Diumenge', 1),
 (13, 'Tai kwai chi', 'Komila xina para yeba a tu casita', 0, '0', '', '', 0, '', 4),
 (14, 'Zagreb armani', 'Ki pasa amego quiere comida buina?', 0, '0', '', '', 0, '', 7),
 (16, 'El racó de\'n pere', 'ajajajajaj', 0, '0', '', '', 0, '', 10),
@@ -509,7 +512,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `opinions`
 --
 ALTER TABLE `opinions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `paisos`
