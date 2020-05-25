@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 4.9.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 23-05-2020 a las 16:22:20
+-- Tiempo de generación: 25-05-2020 a las 16:18:49
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -101,7 +101,10 @@ INSERT INTO `direccions` (`id`, `carrer`, `numero`, `pis`, `ciutats_id`) VALUES
 (33, 'DEFAULT', '0', '0', 9),
 (34, 'Capuchon', '69', '1', 1),
 (35, 'Capuchon', '69', '1', 1),
-(36, 'Capuchon', '69', '1', 1);
+(36, 'Capuchon', '69', '1', 1),
+(37, 'DEFAULT', '0', '0', 1),
+(38, 'DEFAULT', '0', '0', 1),
+(39, 'DEFAULT', '0', '0', 1);
 
 -- --------------------------------------------------------
 
@@ -117,6 +120,25 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imatges_restaurant`
+--
+
+CREATE TABLE `imatges_restaurant` (
+  `id` int(11) NOT NULL,
+  `restaurant_id` int(11) NOT NULL,
+  `rutaImatge` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `imatges_restaurant`
+--
+
+INSERT INTO `imatges_restaurant` (`id`, `restaurant_id`, `rutaImatge`) VALUES
+(1, 11, 'public/uploads/restaurant/11/5ecbd2e7854731590416103.png');
 
 -- --------------------------------------------------------
 
@@ -150,7 +172,7 @@ CREATE TABLE `opinions` (
   `usuari_id` int(11) NOT NULL,
   `restaurant_id` int(11) NOT NULL,
   `comentari` varchar(500) COLLATE utf8_bin NOT NULL,
-  `puntuacio` int(11) NOT NULL,
+  `puntuacio` double NOT NULL,
   `data` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -176,7 +198,11 @@ INSERT INTO `opinions` (`id`, `usuari_id`, `restaurant_id`, `comentari`, `puntua
 (15, 3, 17, 'feo', 1, '2020-05-21 13:17:50'),
 (16, 1, 13, 'Amazing bro', 9, '2020-05-23 13:48:21'),
 (17, 1, 13, 'Amazing bro', 9, '2020-05-23 13:48:59'),
-(18, 1, 13, 'Amazing bro', 9, '2020-05-23 13:51:00');
+(18, 1, 13, 'Amazing bro', 9, '2020-05-23 13:51:00'),
+(19, 11, 11, 'fdsfdsf', 5, '2020-05-24 18:03:54'),
+(20, 1, 14, 'Amazing', 5, '2020-05-25 11:38:43'),
+(21, 1, 14, 'Esta bien', 1, '2020-05-25 11:38:51'),
+(22, 1, 14, 'Esta bien', 1, '2020-05-25 11:40:57');
 
 -- --------------------------------------------------------
 
@@ -306,7 +332,11 @@ INSERT INTO `telefons` (`id`, `user_id`, `numero`) VALUES
 (10, 1, 938186669),
 (11, 1, 938186669),
 (12, 1, 938186669),
-(13, 1, 111111111);
+(13, 1, 111111111),
+(14, 11, 222222222),
+(20, 11, 222222222),
+(21, 11, 222222222),
+(22, 11, 222222222);
 
 -- --------------------------------------------------------
 
@@ -344,7 +374,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (8, 'usernif3', 'usernif3@gmail.com', NULL, '$2y$10$mbQ574UhL7VghPberYdvqeRkXa1ti0qyke87CRAsHgs.qcgxH.W2.', NULL, '2020-04-29 14:22:32', '2020-04-29 14:22:32', 1, 2, '0000000L', NULL, NULL, NULL, 'default.jpg'),
 (9, 'Maria', 'mariafernanda@gmail.com', NULL, '$2y$10$URcR9dmQrebiOtx8IE5U5.RzdUHcLqWZ8cRLVP86RtqZcA2aGoqvq', NULL, '2020-04-29 14:49:07', '2020-04-29 14:49:07', 1, 1, '56659663A', NULL, NULL, NULL, 'default.jpg'),
 (10, 'marga', 'marga@gmail.com', NULL, '$2y$10$Aar3iQGeinmnCOmjGRVfR.fx8N9xoPLkWdjvNvmFx41jjA227Op6G', NULL, '2020-05-12 12:16:04', '2020-05-12 12:16:04', 1, 1, '47744558L', 'marrrra', 'dona', '2020-05-13', 'default.jpg'),
-(11, 'Pere', 'peredirtbike@gmail.com', NULL, '$2y$10$l8uP/dJBUQtRChjz5s/34etJWudWfFcQYTBsYIa5jknpvYlsr.LMO', NULL, '2020-05-12 18:27:25', '2020-05-12 18:27:25', 1, 2, '47747322N', 'Garcia', 'home', '1998-11-03', 'default.jpg'),
+(11, 'Pere', 'peredirtbike@gmail.com', NULL, '$2y$10$l8uP/dJBUQtRChjz5s/34etJWudWfFcQYTBsYIa5jknpvYlsr.LMO', NULL, '2020-05-12 18:27:25', '2020-05-24 17:45:10', 39, 2, '47747322N', 'Garcia', 'home', '1998-11-03', 'default.jpg'),
 (12, 'xavi', 'xavi@gmail.com', NULL, '$2y$10$rckpOGfLB5sj019OizXbDeOfGHb6w4RQt9U5r.7S179e5/6qNXEvi', NULL, '2020-05-16 15:21:47', '2020-05-16 15:24:25', 33, 1, '65654995G', 'ciscu', 'home', '2016-05-06', 'default.jpg'),
 (13, 'Pepe', 'pepe@gmail.com', NULL, '$2y$10$Dxbof9vfOJyxMOZpQJIUb.LyL6dz3NX7vF.frP3hswzJPitumbkru', NULL, '2020-05-16 15:32:09', '2020-05-16 15:32:09', 1, 1, '46652112F', 'benid', 'home', '2020-05-08', 'default.jpg');
 
@@ -370,6 +400,12 @@ ALTER TABLE `direccions`
 -- Indices de la tabla `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `imatges_restaurant`
+--
+ALTER TABLE `imatges_restaurant`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -445,13 +481,19 @@ ALTER TABLE `ciutats`
 -- AUTO_INCREMENT de la tabla `direccions`
 --
 ALTER TABLE `direccions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `imatges_restaurant`
+--
+ALTER TABLE `imatges_restaurant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -463,7 +505,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `opinions`
 --
 ALTER TABLE `opinions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `paisos`
@@ -481,13 +523,13 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT de la tabla `telefons`
 --
 ALTER TABLE `telefons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
