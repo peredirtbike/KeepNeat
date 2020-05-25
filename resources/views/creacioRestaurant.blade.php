@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (Auth::user()->rol_id != 1)
+
 <div class="container">
 <form enctype="multipart/form-data" class="form-horizontal" action="{{route('agregarRestaurant')}}" role="form" method="POST">
         <div class="container">
@@ -91,4 +94,14 @@
               </footer>
         </div>
     </form>
+    @else
+    <h1 class="text-center">No tens permis per crear un Restaurant</h1>
+
+    <footer class="text-center">
+      <p>&copy; Keep n' Eat 2020</p>
+    </footer>
+
+    @endif
+
+
 @endsection 

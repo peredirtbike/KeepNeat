@@ -2,7 +2,7 @@
 
 @section('content')
 
- 
+  @if ($propietari == Auth::user()->id)
 
     <form enctype="multipart/form-data" class="form-horizontal" action="{{ route('updateRestaurant',$restId) }}" role="form" method="POST">
         <div class="container">
@@ -78,13 +78,20 @@
                 </div>
             </div>
 
-       
+           
 
                 <footer class="text-center">
                 <p>&copy; Keep n' Eat 2020</p>
               </footer>
         </div>
     </form>
+    @else 
+    <h1 class="text-center">Aquest no es el teu restaurant</h1>
 
+    <footer class="text-center">
+      <p>&copy; Keep n' Eat 2020</p>
+    </footer>
+
+    @endif
 
 @endsection

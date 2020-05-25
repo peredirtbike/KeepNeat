@@ -66,12 +66,8 @@ class RestaurantController extends Controller
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
        
-            return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari'));
+        return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari'));
         
-
-        
-
-   
     }
 
     public function updateRestaurant($id, Request $request)
@@ -123,11 +119,7 @@ class RestaurantController extends Controller
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-        // $sqlQuery = "SELECT usuari_id FROM opinions WHERE restaurant_id = ".$restId.";";
-        // $opinionsComenter = DB::select(DB::raw($sqlQuery));
         $usuaris = \App\User::all();
-
-
 
         return view('mostra_restaurant', compact('restId','propietari','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris','ruta','imatges'));
     }
@@ -197,35 +189,37 @@ class RestaurantController extends Controller
             $restAgregar-> save();
             $id = $restAgregar->id;
 
+            $restaurant = Restaurant::findOrFail($id);
+
+            $restId = $restaurant->id;
+            $nom = $restaurant->nom;
+            $descripcio = $restaurant->descripcio;
+            $estrelles = $restaurant->estrelles;
+            $preu = $restaurant->preu;
+            $tipus_cuina = $restaurant->tipus_cuina;
+            $adreca = $restaurant->adreca;
+            $telefon = $restaurant->telefon;
+            $horari = $restaurant->horari;
+            $propietari = $restaurant->user_id;
+
+
+            $idPropi = Auth::user()->id;
+
+            $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
+
+            return view('mostra_restaurant', compact('idPropi','restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari'));
+
         }
-        else{
-            return view('welcome');
+        else
+        {
+            if(Auth::user()){
+                $idRestaurant = Restaurant::where('user_id',Auth::user()->id)->get('id');
+            }
+            $restaurants = \App\Restaurant::paginate(6);
+            $data["restaurants"] = $restaurants;
+    
+            return view('welcome', $data, compact('idRestaurant'));
         }
-        // $restaurants = \App\Restaurant::all();
-        // $data["restaurants"] = $restaurants;
-        
-        // return view('restaurants', $data);
-
-        $restaurant = Restaurant::findOrFail($id);
-
-        $restId = $restaurant->id;
-        $nom = $restaurant->nom;
-        $descripcio = $restaurant->descripcio;
-        $estrelles = $restaurant->estrelles;
-        $preu = $restaurant->preu;
-        $tipus_cuina = $restaurant->tipus_cuina;
-        $adreca = $restaurant->adreca;
-        $telefon = $restaurant->telefon;
-        $horari = $restaurant->horari;
-        $propietari = $restaurant->user_id;
-
-
-        $idPropi = Auth::user()->id;
-
-        $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
-
-
-        return view('mostra_restaurant', compact('idPropi','restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari'));
    
     }
 
