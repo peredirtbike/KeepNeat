@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use \App\Restaurant;
-
 use DateTime;
-
 use Image;
 use Auth;
+use \App\Imatge;
+
 
 use Carbon\Carbon;
 
@@ -59,19 +59,17 @@ class RestaurantController extends Controller
         $adreca = $restaurant->adreca;
         $telefon = $restaurant->telefon;
         $horari = $restaurant->horari;
+        $propietari = $restaurant->user_id;
+
         $idPropi = $restaurant->user_id;
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-        if (Auth::user()->id == $idPropi)
-        {
-            return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
-        }
+       
+            return view('modificaRestaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari'));
+        
 
-        else 
-        {
-            return view('mostra_restaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
-        }
+        
 
    
     }
@@ -97,17 +95,20 @@ class RestaurantController extends Controller
         $adreca = $restaurant->adreca;
         $telefon = $restaurant->telefon;
         $horari = $restaurant->horari;
+        $propietari = $restaurant->user_id;
+
         $idPropi = $restaurant->user_id;
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
-        return view('mostra_restaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
+        return view('mostra_restaurant', compact('restId', 'nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari'));
     }
 
     public function mostrar_restaurante($id)
     {
         $restaurant = Restaurant::findOrFail($id);
         $restId = $restaurant->id;
+        $imatges = Imatge::all()->where('restaurant_id', $restId);
         $nom = $restaurant->nom;
         $descripcio = $restaurant->descripcio;
         $estrelles = $restaurant->estrelles;
@@ -116,6 +117,8 @@ class RestaurantController extends Controller
         $adreca = $restaurant->adreca;
         $telefon = $restaurant->telefon;
         $horari = $restaurant->horari;
+        $propietari = $restaurant->user_id;
+
         $idPropi = $restaurant->user_id;
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
@@ -126,7 +129,7 @@ class RestaurantController extends Controller
 
 
 
-        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris','ruta'));
+        return view('mostra_restaurant', compact('restId','propietari','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris','ruta','imatges'));
     }
 
     // ------------------------------------------------ OPINIO ---------------------------------------------------
@@ -154,13 +157,15 @@ class RestaurantController extends Controller
         $adreca = $restaurant->adreca;
         $telefon = $restaurant->telefon;
         $horari = $restaurant->horari;
+        $propietari = $restaurant->user_id;
+
         $idPropi = $restaurant->user_id;
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
         $usuaris = \App\User::all();
 
-        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris'));
+        return view('mostra_restaurant', compact('restId','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris', 'propietari'));
     }
 
     // ------------------------------------------------ CREA REST ------------------------------------------------
@@ -212,13 +217,15 @@ class RestaurantController extends Controller
         $adreca = $restaurant->adreca;
         $telefon = $restaurant->telefon;
         $horari = $restaurant->horari;
+        $propietari = $restaurant->user_id;
+
 
         $idPropi = Auth::user()->id;
 
         $opinions = \App\Opinio::all()->where('restaurant_id', $restId);
 
 
-        return view('mostra_restaurant', compact('idPropi','restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions'));
+        return view('mostra_restaurant', compact('idPropi','restId','nom', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'propietari'));
    
     }
 
@@ -241,6 +248,14 @@ class RestaurantController extends Controller
         $imageName = uniqid().time() . '.' . $image->extension();
 
         $image->move(public_path('uploads/restaurant/'.$usuariFolder), $imageName);
+
+
+        $imatge = new Imatge;
+        $imatge-> restaurant_id = $usuariFolder;
+        $imatge-> rutaImatge = $imageName;
+        $imatge->save();
+
+        dd($imageName);
 
         return response()->json(['success' => $imageName]);
     }
@@ -268,6 +283,8 @@ class RestaurantController extends Controller
     function delete(Request $request)
     {
         $idRestaurant = $request->id;
+        Imatge::where('rutaImatge', $request->get('name'))->delete();
+
      if($request->get('name'))
      {
       \File::delete(public_path('uploads/restaurant/'.$idRestaurant. '/' . $request->get('name')));

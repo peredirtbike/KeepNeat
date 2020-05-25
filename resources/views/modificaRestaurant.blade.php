@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+ 
+
     <form enctype="multipart/form-data" class="form-horizontal" action="{{ route('updateRestaurant',$restId) }}" role="form" method="POST">
         <div class="container">
             <h2 class="display-4 mb-4">{{$nom}}</h2>
@@ -75,6 +78,7 @@
                 </div>
             </div>
 
+       
 
                 <footer class="text-center">
                 <p>&copy; Keep n' Eat 2020</p>
@@ -82,6 +86,5 @@
         </div>
     </form>
 
-    
 
 @endsection

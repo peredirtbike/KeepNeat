@@ -40,7 +40,7 @@
 <html>
  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Image Upload in Laravel using Dropzone</title>
+  <title>Image upload</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
@@ -48,7 +48,7 @@
  <body>
   <div class="container-fluid">
       <br />
-    <h3 align="center">Image Upload in Laravel using Dropzone</h3>
+    <h3 align="center">Image Upload</h3>
     <br />
         
       <div class="panel panel-default">

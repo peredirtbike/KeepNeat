@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 25-05-2020 a las 16:18:49
+-- Tiempo de generación: 25-05-2020 a las 19:08:19
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -138,7 +138,11 @@ CREATE TABLE `imatges_restaurant` (
 --
 
 INSERT INTO `imatges_restaurant` (`id`, `restaurant_id`, `rutaImatge`) VALUES
-(1, 11, 'public/uploads/restaurant/11/5ecbd2e7854731590416103.png');
+(79, 11, '5ecc14ecab2371590433004.jpeg'),
+(80, 11, '5ecc14eca9afa1590433004.jpeg'),
+(81, 11, '5ecc14ecb11b91590433004.jpeg'),
+(82, 11, '5ecc14ecb05bd1590433004.jpeg'),
+(83, 11, '5ecc14ecb14cb1590433004.jpeg');
 
 -- --------------------------------------------------------
 
@@ -493,7 +497,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `imatges_restaurant`
 --
 ALTER TABLE `imatges_restaurant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`

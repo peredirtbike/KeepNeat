@@ -12,6 +12,8 @@ class Imatge extends Model
     protected $fillable = [
         'restaurant_id', 'rutaImatge',
     ];
+    
+    public $timestamps = false;
 
 
     public function Restaurants()
