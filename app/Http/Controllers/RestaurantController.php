@@ -125,7 +125,7 @@ class RestaurantController extends Controller
 
         $usuaris = \App\User::all();
 
-        return view('mostra_restaurant', compact('restId','propietari','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris','ruta','imatges'));
+        return view('mostra_restaurant', compact('restaurant','restId','propietari','nom', 'idPropi', 'descripcio', 'estrelles', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'opinions', 'usuaris','imatges'));
     }
 
     // ------------------------------------------------ OPINIO ---------------------------------------------------

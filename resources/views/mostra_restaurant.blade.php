@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="container">
-    <div class="row">
+    {{-- <div class="row">
       <div class="col-md-12 shadow p-3 mb-5 bg-white rounded">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -16,7 +16,7 @@
           <div class="carousel-inner">
               @foreach($imatges as $key => $imatge)
               <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                  <img src="{{asset('/uploads/restaurant/'.$restId.'/'.$imatge->rutaImatge)}}" class="d-block w-100" height="500" width="500"  alt="..."> 
+                  <img src="{{asset('/uploads/restaurant/'.$restId.'/'.$imatge->rutaImatge)}}" class="d-block w-100" height="500" width="500"  alt="imatge"> 
               </div>
               @endforeach
           </div>
@@ -30,6 +30,14 @@
           </a>
       </div>
       </div>
+    </div> --}}
+
+    <div class="row">
+          @foreach($imatges as $key => $imatge)
+          <div class="col-md-2 mb-5">
+          <img src="{{asset('/uploads/restaurant/'.$restId.'/'.$imatge->rutaImatge)}}" height="180" width="180" alt="">
+          </div>
+          @endforeach
     </div>
     <!-- Example row of columns -->
     <div class="row">
