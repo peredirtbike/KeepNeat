@@ -35,7 +35,7 @@
     <div class="row">
           @foreach($imatges as $key => $imatge)
           <div class="col-md-2 mb-5">
-          <img src="{{asset('/uploads/restaurant/'.$restId.'/'.$imatge->rutaImatge)}}" height="180" width="180" alt="">
+            <img src="{{asset('/uploads/restaurant/'.$restId.'/'.$imatge->rutaImatge)}}" height="180" width="180" alt="">
           </div>
           @endforeach
     </div>
