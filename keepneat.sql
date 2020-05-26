@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 25-05-2020 a las 21:45:16
+-- Tiempo de generación: 26-05-2020 a las 12:55:40
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.19
 
@@ -45,7 +45,17 @@ INSERT INTO `ciutats` (`id`, `nom`, `paisos_id`) VALUES
 (6, 'Lima', 2),
 (7, 'Trujillo', 2),
 (8, 'Barcelona (Argentina)', 3),
-(9, 'San Francisco', 4);
+(9, 'San Francisco', 4),
+(10, 'Andorra la Vella', 5),
+(11, 'Tokyo', 13),
+(12, 'Panama', 14),
+(13, 'Seoul', 12),
+(14, 'Ottawa', 6),
+(15, 'Zagreb', 7),
+(16, 'Cairo', 9),
+(17, 'Ljbljana', 8),
+(18, 'Conakry', 11),
+(19, 'Roma', 10);
 
 -- --------------------------------------------------------
 
@@ -104,7 +114,14 @@ INSERT INTO `direccions` (`id`, `carrer`, `numero`, `pis`, `ciutats_id`) VALUES
 (36, 'Capuchon', '69', '1', 1),
 (37, 'DEFAULT', '0', '0', 1),
 (38, 'DEFAULT', '0', '0', 1),
-(39, 'DEFAULT', '0', '0', 1);
+(39, 'DEFAULT', '0', '0', 1),
+(40, 'DEFAULT', '0', '0', 1),
+(41, 'DEFAULT', '0', '0', 1),
+(42, 'DEFAULT', '0', '0', 9),
+(43, 'Cal Rubio', '15', '3', 1),
+(44, 'DEFAULT', '0', '0', 1),
+(45, 'DEFAULT', '0', '0', 1),
+(46, 'DEFAULT', '0', '0', 1);
 
 -- --------------------------------------------------------
 
@@ -185,31 +202,17 @@ CREATE TABLE `opinions` (
 --
 
 INSERT INTO `opinions` (`id`, `usuari_id`, `restaurant_id`, `comentari`, `puntuacio`, `data`) VALUES
-(1, 1, 16, 'dsafas', 13, '2009-02-15 15:28:53'),
-(2, 1, 16, 'fasdfasg', 3425, '2009-02-15 15:29:02'),
-(3, 1, 16, 'ygfcighcvjlg', 890, '2009-02-15 15:29:36'),
-(4, 1, 16, 'ygfcighcvjlg', 890, '2009-02-15 15:32:13'),
-(5, 1, 16, 'ygfcighcvjlg', 890, '2009-02-15 15:32:23'),
-(6, 1, 16, 'ygfcighcvjlg', 890, '2009-02-15 15:39:09'),
-(7, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:39:19'),
-(8, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:42:34'),
-(9, 1, 16, 'gadscgafdcv', 51, '2009-02-15 15:42:47'),
-(10, 1, 11, 'gadscgafdcv', 51, '2020-05-18 14:43:49'),
-(11, 1, 16, 'fdsafasfsaas', 2, '2020-05-18 14:43:54'),
-(12, 1, 16, 'fdsfsd', 99, '2020-05-19 12:59:32'),
-(13, 2, 11, 'dasda', 32, '2020-05-20 12:49:12'),
-(14, 1, 11, 'fasfdsafasdf', 12, '2020-05-21 12:55:54'),
-(15, 3, 17, 'feo', 1, '2020-05-21 13:17:50'),
-(16, 1, 13, 'Amazing bro', 9, '2020-05-23 13:48:21'),
-(17, 1, 13, 'Amazing bro', 9, '2020-05-23 13:48:59'),
-(18, 1, 13, 'Amazing bro', 9, '2020-05-23 13:51:00'),
-(19, 11, 11, 'fdsfdsf', 5, '2020-05-24 18:03:54'),
-(20, 1, 14, 'Amazing', 5, '2020-05-25 11:38:43'),
-(21, 1, 14, 'Esta bien', 1, '2020-05-25 11:38:51'),
-(22, 1, 14, 'Esta bien', 1, '2020-05-25 11:40:57'),
-(23, 1, 11, 'Magnifico', 3, '2020-05-25 19:42:27'),
-(24, 1, 20, 'fgdsf', 5, '2020-05-25 19:43:51'),
-(25, 1, 20, 'fgdsf', 5, '2020-05-25 19:45:00');
+(1, 2, 11, 'Espectacular la orientacio', 5, '2009-02-15 15:28:53'),
+(11, 9, 16, 'La presentacio dels plats ha estat molt bona', 4, '2020-05-18 14:43:54'),
+(12, 2, 19, 'Falta una mica mes de varietat', 2, '2020-05-19 12:59:32'),
+(16, 12, 13, 'El menjar no esta gaire bo', 2, '2020-05-23 13:48:21'),
+(17, 1, 13, 'Local brut', 1, '2020-05-23 13:48:59'),
+(18, 10, 13, 'No te una ubicacio facil d\'arribar', 2, '2020-05-23 13:51:00'),
+(19, 11, 16, 'El interior no esta garie net', 1, '2020-05-24 18:03:54'),
+(20, 1, 14, 'Molt economic per menjar ràpid', 5, '2020-05-25 11:38:43'),
+(21, 2, 14, 'Molta varietat per afegir al durum', 4, '2020-05-25 11:38:51'),
+(22, 9, 14, 'Falta de cambrers', 1, '2020-05-25 11:40:57'),
+(26, 9, 11, 'Molt bona carn', 5, '2020-05-26 09:47:00');
 
 -- --------------------------------------------------------
 
@@ -230,7 +233,17 @@ INSERT INTO `paisos` (`id`, `nom`) VALUES
 (1, 'España'),
 (2, 'Peru'),
 (3, 'Argentina'),
-(4, 'USA');
+(4, 'USA'),
+(5, 'Andorra'),
+(6, 'Canada'),
+(7, 'Croacia'),
+(8, 'Eslovenia'),
+(9, 'Egipte'),
+(10, 'Italia'),
+(11, 'Guinea'),
+(12, 'Corea'),
+(13, 'Japo'),
+(14, 'Panama');
 
 -- --------------------------------------------------------
 
@@ -281,14 +294,13 @@ CREATE TABLE `restaurants` (
 --
 
 INSERT INTO `restaurants` (`id`, `nom`, `descripcio`, `estrelles`, `preu`, `tipus_cuina`, `adreca`, `telefon`, `horari`, `user_id`) VALUES
-(11, 'El asador argentino chino tambenne', 'italochinao', NULL, '200-900€', 'medioxina', 'tarantino', 699696332, 'Dilluns-Diumenge', 1),
-(13, 'Tai kwai chi', 'Komila xina para yeba a tu casita', 0, '0', '', '', 0, '', 4),
-(14, 'Zagreb armani', 'Ki pasa amego quiere comida buina?', 0, '0', '', '', 0, '', 7),
-(16, 'El racó de\'n pere', 'ajajajajaj', 0, '0', '', '', 0, '', 10),
-(17, 'La pipa de la pau', 'Fuma\'t els porrilos a gust', 0, '0', '', '', 0, '', 11),
-(18, 'daddaads', 'ghvuvcgjuvb', 60, '100', NULL, 'hcvfvgb jn', 699665582, 'Dilluns - Diumenge', 8),
-(19, 'Papanatas', 'patatas fritas', 50, '10-58', NULL, 'Avenida callefria', 644145232, 'Dilluns - Diumenge', 6),
-(20, 'ChinCHAN', 'comia xina', NULL, '15-30€', 'MediteOriental', 'Avenida callefria', 699699699, 'Dilluns - Diumenge', 3);
+(11, 'El asador argentino', 'Carn argentina de primera calitat', 0, '50-200€', 'Carn', 'Carrer Mas Gornal', 699696332, 'Dimarts-Diumenge', 1),
+(13, 'Tai kwai chi', 'Restaurant oriental per a tota la família', 0, '10-30€', 'Oriental', 'Avinguda Cal Mas', 935652211, 'Dilluns-Diumenge', 4),
+(14, 'Zagreb armani', 'Durum kebab ', 0, '4-18€', 'Turquia', 'Carrer del Mar', 931514488, 'Dimarts-Diumenge', 7),
+(16, 'El racó de\'n pere', 'Paelles d\'arroç i fideuà', 0, '20-150€', 'Mediterranea', 'Avinguda Boramar', 935386659, 'Dijous-Dilluns', 10),
+(19, 'Papanatas', 'Patates fregides', 0, '10-20€', 'Patates', 'Avenida callefria', 644145232, 'Dilluns - Diumenge', 6),
+(22, 'Chiringuito de Pepe', 'Restaurant amb menjar de tots tipus', 0, '20-60€', 'Alternativa', 'Avinguda Callefria', 931512233, 'Dimecres-Dilluns', 13),
+(23, 'Meson Francisco', 'Menjar de la terra', 0, '10-30€', 'Mediterranea', 'Rambla Nostre Senyora', 655214226, 'Diluns-Diumenge', 14);
 
 -- --------------------------------------------------------
 
@@ -343,7 +355,9 @@ INSERT INTO `telefons` (`id`, `user_id`, `numero`) VALUES
 (14, 11, 222222222),
 (20, 11, 222222222),
 (21, 11, 222222222),
-(22, 11, 222222222);
+(22, 11, 222222222),
+(23, 14, 935655588),
+(24, 14, 655659566);
 
 -- --------------------------------------------------------
 
@@ -375,15 +389,13 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `direccions_id`, `rol_id`, `nif`, `cognoms`, `sexe`, `data_naixement`, `avatar`) VALUES
 (1, 'Gerard', 'gerard@gmail.com', NULL, '$2y$10$OkHzOLAHV0ElWUaSEOuiiubL7w.Mvlfn92pihTWjiPqyVkCh0Iesm', NULL, '2020-04-28 12:40:02', '2020-05-23 14:18:12', 36, 0, '88888856O', 'Bonastre Sivill', NULL, '2063-12-23', '1589900140.jpg'),
-(2, 'Pere', 'pere@gmail.com', NULL, '$2y$10$NAq64.8qgXl3m5aaQDl5AOFY8zz2f9FSsL6zvE2f/hNvo2Bufajtu', NULL, '2020-04-29 13:23:04', '2020-04-29 13:23:04', 3, 1, '21312', NULL, NULL, NULL, 'default.jpg'),
-(5, 'UsuarioBasicoNIF', 'usbasnif@gmail.com', NULL, '$2y$10$nRwuiUzciAbwAIfh8cdeDOHOcD8EnS7SQUdvAH/ehyQCn0/VgITja', NULL, '2020-04-29 14:18:12', '2020-04-29 14:18:12', 1, 1, NULL, NULL, NULL, NULL, 'default.jpg'),
-(6, 'usernif2', 'usernif2@gmail.com', NULL, '$2y$10$IuDN9EGf85A97bQV4Y8YVOu5FAtF08CKpuLaQfd49/f4hO8eWhs1C', NULL, '2020-04-29 14:20:14', '2020-04-29 14:20:14', 1, 2, '0000000G', NULL, NULL, NULL, 'default.jpg'),
-(8, 'usernif3', 'usernif3@gmail.com', NULL, '$2y$10$mbQ574UhL7VghPberYdvqeRkXa1ti0qyke87CRAsHgs.qcgxH.W2.', NULL, '2020-04-29 14:22:32', '2020-04-29 14:22:32', 1, 2, '0000000L', NULL, NULL, NULL, 'default.jpg'),
-(9, 'Maria', 'mariafernanda@gmail.com', NULL, '$2y$10$URcR9dmQrebiOtx8IE5U5.RzdUHcLqWZ8cRLVP86RtqZcA2aGoqvq', NULL, '2020-04-29 14:49:07', '2020-04-29 14:49:07', 1, 1, '56659663A', NULL, NULL, NULL, 'default.jpg'),
-(10, 'marga', 'marga@gmail.com', NULL, '$2y$10$Aar3iQGeinmnCOmjGRVfR.fx8N9xoPLkWdjvNvmFx41jjA227Op6G', NULL, '2020-05-12 12:16:04', '2020-05-12 12:16:04', 1, 1, '47744558L', 'marrrra', 'dona', '2020-05-13', 'default.jpg'),
+(2, 'Pere', 'pere@gmail.com', NULL, '$2y$10$NAq64.8qgXl3m5aaQDl5AOFY8zz2f9FSsL6zvE2f/hNvo2Bufajtu', NULL, '2020-04-29 13:23:04', '2020-05-26 10:49:12', 43, 2, '21312', NULL, NULL, NULL, '1590497351.jpg'),
+(9, 'Maria', 'mariafernanda@gmail.com', NULL, '$2y$10$URcR9dmQrebiOtx8IE5U5.RzdUHcLqWZ8cRLVP86RtqZcA2aGoqvq', NULL, '2020-04-29 14:49:07', '2020-05-26 10:51:14', 46, 1, '56659663A', 'Fernanda', NULL, NULL, '1590497468.jpg'),
+(10, 'Marga', 'marga@gmail.com', NULL, '$2y$10$Aar3iQGeinmnCOmjGRVfR.fx8N9xoPLkWdjvNvmFx41jjA227Op6G', NULL, '2020-05-12 12:16:04', '2020-05-26 10:50:08', 44, 1, '47744558L', 'marrrra', 'dona', '2020-05-13', '1590497408.jpg'),
 (11, 'Pere', 'peredirtbike@gmail.com', NULL, '$2y$10$l8uP/dJBUQtRChjz5s/34etJWudWfFcQYTBsYIa5jknpvYlsr.LMO', NULL, '2020-05-12 18:27:25', '2020-05-24 17:45:10', 39, 2, '47747322N', 'Garcia', 'home', '1998-11-03', 'default.jpg'),
-(12, 'xavi', 'xavi@gmail.com', NULL, '$2y$10$rckpOGfLB5sj019OizXbDeOfGHb6w4RQt9U5r.7S179e5/6qNXEvi', NULL, '2020-05-16 15:21:47', '2020-05-16 15:24:25', 33, 1, '65654995G', 'ciscu', 'home', '2016-05-06', 'default.jpg'),
-(13, 'Pepe', 'pepe@gmail.com', NULL, '$2y$10$Dxbof9vfOJyxMOZpQJIUb.LyL6dz3NX7vF.frP3hswzJPitumbkru', NULL, '2020-05-16 15:32:09', '2020-05-16 15:32:09', 1, 1, '46652112F', 'benid', 'home', '2020-05-08', 'default.jpg');
+(12, 'Xavi', 'xavi@gmail.com', NULL, '$2y$10$rckpOGfLB5sj019OizXbDeOfGHb6w4RQt9U5r.7S179e5/6qNXEvi', NULL, '2020-05-16 15:21:47', '2020-05-26 10:47:47', 42, 1, '65654995G', 'ciscu', 'home', '2016-05-06', '1590497267.jpg'),
+(13, 'Pepe', 'pepe@gmail.com', NULL, '$2y$10$Dxbof9vfOJyxMOZpQJIUb.LyL6dz3NX7vF.frP3hswzJPitumbkru', NULL, '2020-05-16 15:32:09', '2020-05-26 10:47:22', 41, 2, '46652112F', 'benid', 'home', '2020-05-08', '1590497242.jpg'),
+(14, 'Francisco', 'francisco@gmail.com', NULL, '$2y$10$wNx0egAWPhJB.toVgdf0H.WbIJ8JwVUu.sizSfgZPwkfS21Gl3WL6', NULL, '2020-05-26 10:45:40', '2020-05-26 10:46:42', 40, 2, '47745441S', 'Garcia', 'home', '1998-03-15', '1590497201.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -482,13 +494,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `ciutats`
 --
 ALTER TABLE `ciutats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `direccions`
 --
 ALTER TABLE `direccions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -512,31 +524,31 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `opinions`
 --
 ALTER TABLE `opinions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `paisos`
 --
 ALTER TABLE `paisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `telefons`
 --
 ALTER TABLE `telefons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas
