@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-      <h2 class="display-4 mb-4">{{$nom}}</h2>
+      <h2 class="display-4 mb-4">{{$restaurant->nom}}</h2>
       <p></p>
     </div>
   </div>
@@ -35,7 +35,7 @@
     <div class="row">
           @foreach($imatges as $key => $imatge)
           <div class="col-md-2 mb-5">
-          <img src="{{asset('/uploads/restaurant/'.$restId.'/'.$imatge->rutaImatge)}}" height="180" width="180" alt="">
+            <img src="{{asset('/uploads/restaurant/'.$restaurant->id.'/'.$imatge->rutaImatge)}}" height="180" width="180" alt="">
           </div>
           @endforeach
     </div>
@@ -43,25 +43,25 @@
     <div class="row">
         <div class="col-md-6 shadow p-3 mb-5 bg-white rounded">
             <h2>Detalls</h2>
-            <p><strong>DESCRIPCIÓ: </strong>{{$descripcio}}</p>
-            <p><strong>PUNTUACIÓ MITJA: </strong>{{\App\Opinio::where('restaurant_id',$restId)->pluck('puntuacio')->avg()}}⭐</p>
-            <p><strong>RANG DE PREUS: </strong>{{$preu}} €</p>
-            <p><strong>TIPUS DE CUINA: </strong>{{$tipus_cuina}}</p>
+            <p><strong>DESCRIPCIÓ: </strong>{{$restaurant->descripcio}}</p>
+            <p><strong>PUNTUACIÓ MITJA: </strong>{{\App\Opinio::where('restaurant_id',$restaurant->id)->pluck('puntuacio')->avg()}}⭐</p>
+            <p><strong>RANG DE PREUS: </strong>{{$restaurant->preu}} €</p>
+            <p><strong>TIPUS DE CUINA: </strong>{{$restaurant->tipus_cuina}}</p>
         </div>
 
         <div class="col-md-6 shadow p-3 mb-5 bg-white rounded">
             <h2>Ubicació i contacte</h2>
-            <p><strong>ADREÇA:</strong> {{$adreca}}</p>
-            <p><strong>TELEFON:</strong> {{$telefon}}</p>
-            <p><strong>HORARI:</strong> {{$horari}}</p>
+            <p><strong>ADREÇA:</strong> {{$restaurant->adreca}}</p>
+            <p><strong>TELEFON:</strong> {{$restaurant->telefon}}</p>
+            <p><strong>HORARI:</strong> {{$restaurant->horari}}</p>
         </div>
     </div>
 
    <div class="row mb-5">
     <div class="col-md-8">
     @if(Auth::user())
-    @if(Auth::user()->id == $idPropi)
-      <a id="{{$idPropi}}" href="{{ route('modificaRestaurant',$restId) }}">Modificar Restaurant</a>
+    @if(Auth::user()->id == $restaurant->user_id)
+      <a id="{{$restaurant->id}}" href="{{ route('modificaRestaurant',$restaurant->id) }}">Modificar Restaurant</a>
     @endif
       </div>
     </div>
@@ -69,7 +69,7 @@
     <div class="mb-5">
     <div class="form-row">
       <div class="form-group col-md-2">
-      <form action="{{ route('opinioSend',$restId) }}" method="post">
+      <form action="{{ route('opinioSend',$restaurant->id) }}" method="post">
       @csrf
         <label>Puntuació</label>
         <input class="form-control" type="number" name="puntuacio" id="puntuacio" min="1" max="5">
@@ -83,7 +83,7 @@
       </div>
     </div>
     <input type="submit" class="btn btn-primary mr-2" value="Enviar Comentari">
-    <input type="hidden" name="idRest" id="idRest" value="{{$restId}}">
+    <input type="hidden" name="idRest" id="idRest" value="{{$restaurant->id}}">
     
       </form>
     </div>
@@ -94,16 +94,18 @@
       <h2>Opinions i Puntuacions</h2>
     </div>
   </div>
-  @foreach ($opinions as $opinio)
-    @foreach ($usuaris as $usuari)
-      @if ($opinio->usuari_id == $usuari->id)
-
+  @forelse ($restaurant->Opinions()->get() as $opinio)
     <div class="col-md-12 shadow p-3 mb-1 bg-white rounded" style="background-color: #8c8b8b"; >
       <div>
         {{$opinio->puntuacio}}
         <p class="d-flex justify-content-end"><small class="float-right">{{$opinio->data}}</small></p>
 
       </div>
+
+      <?php
+        $usuari = $opinio->Usuari()->first();
+      ?>
+      
     <div class="media">
       <a class="media-left" href="#">
         <img class="rounded-circle mr-4" src="/uploads/avatars/{{ $usuari->avatar }}" height="50" width="50">
@@ -113,12 +115,12 @@
             {{$opinio->comentari}}
       </div>
     </div>
-
     </div>
-    @endif
-
-  @endforeach
-@endforeach
+    @empty
+    <div>
+      <p>No hay ninguna opinion</p>
+    </div>
+  @endforelse
 
 <div class="mb-5"></div>
     

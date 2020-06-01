@@ -56,8 +56,6 @@
   @if (Route::has('login'))
                     @auth
                     
-                    
-
                     <li class="ml-5 nav-item dropdown">
                       <a class="nav-link dropdown-toggle ml-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name}} </a>
                       <img  src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:5px; border-radius:50%">

@@ -15,14 +15,14 @@
             <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="inputEmail4">Nom del restaurant </label>
-                  <input class="form-control" type="text" name="nomRest" id="nomRest" value="" placeholder="Introdueix un nom per al teu restaurant...">
+                  <input class="form-control" type="text" name="nom" id="nom" value="" placeholder="Introdueix un nom per al teu restaurant...">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Descripció</label>
-                  <textarea class="form-control" type="text" name="descRest" id="descRest" value="" placeholder="Introdueix una descripció per al teu restaurant..."></textarea>
+                  <textarea class="form-control" type="text" name="descripcio" id="descripcio" value="" placeholder="Introdueix una descripció per al teu restaurant..."></textarea>
 
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="form-row">
                 <div class="form-group col-md-2">
                   <label for="inputEmail4">Tipus de cuina</label>
-                  <input class="form-control" type="text" name="tipusCuina" id="tipusCuina" value="" placeholder="Mediterrania, oriental">
+                  <input class="form-control" type="text" name="tipus_cuina" id="tipus_cuina" value="" placeholder="Mediterrania, oriental">
 
                 </div>
             </div>
@@ -46,7 +46,7 @@
             <div class="form-row">
                 <div class="form-group col-md-2">
                   <label for="inputEmail4">Rang de preus:</label>
-                  <input class="form-control" type="text" name="preuRest" id="preuRest" value="" placeholder="15-30€">
+                  <input class="form-control" type="text" name="preu" id="preu" value="" placeholder="15-30€">
 
                 </div>
             </div>
@@ -59,21 +59,21 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Adreça</label>
-                  <input class="form-control" type="text" name="adrecaRest" id="adrecaRest" value="" placeholder="Introdueix una adreça...">
+                  <input class="form-control" type="text" name="adreca" id="adreca" value="" placeholder="Introdueix una adreça...">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-2">
                   <label for="inputEmail4">Telèfon de contacte</label>
-                  <input class="form-control" type="text" name="telefonRest" id="telefonRest" value="" placeholder="Introdueix un telèfon...">
+                  <input class="form-control" type="text" name="telefon" id="telefon" value="" placeholder="Introdueix un telèfon...">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Horari</label>
-                  <input class="form-control" type="text" name="horariRest" id="horariRest" value="" placeholder="Introdueix un horari...">
+                  <input class="form-control" type="text" name="horari" id="horari" value="" placeholder="Introdueix un horari...">
                 </div>
             </div>
 
@@ -82,7 +82,7 @@
                   <input type="submit" class="btn btn-primary mr-2" value="Guardar">
                   <a style="color: black" href="{{route('home')}}">Cancel</a>
 
-                  <input type="hidden" name="idUser" id="idUser" value="{{Auth::user()->id}}">
+                  <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   
                 </div>

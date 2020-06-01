@@ -10,7 +10,7 @@ class Restaurant extends Model
     public $timestamps = FALSE;
 
     protected $fillable = [
-        'nom', 'descripcio', 'user_id',
+        'nom', 'descripcio', 'preu', 'tipus_cuina', 'adreca', 'telefon', 'horari', 'user_id',
     ];
 
     public function User()
@@ -22,5 +22,11 @@ class Restaurant extends Model
     {
         return $this->hasMany(Imatge::class);
     }
+
+    public function Opinions()
+    {
+        return $this->hasMany(Opinio::class);
+    }
+    
 
 }

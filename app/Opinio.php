@@ -15,4 +15,14 @@ class Opinio extends Model
         'usuari_id', 'restaurant_id', 'comentari', 'puntuacio'
     ];
 
+    public function Restaurants()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
+
+    public function Usuari()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

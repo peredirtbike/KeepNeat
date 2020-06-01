@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Telefon::class);
     }
+
+    public function Opinions()
+    {
+        return $this->hasMany(Opinio::class);
+    }
 }
